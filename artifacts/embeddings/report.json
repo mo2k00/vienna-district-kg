@@ -1,0 +1,97 @@
+{
+  "triples": 1104,
+  "split": [
+    0.8,
+    0.1,
+    0.1
+  ],
+  "models": {
+    "TransE": {
+      "config": {
+        "model": "TransE",
+        "embedding_dim": 64,
+        "epochs": 300,
+        "batch_size": 128,
+        "learning_rate": 0.01,
+        "negatives_per_positive": 10
+      },
+      "link_prediction": {
+        "mrr": {
+          "mean": 0.3705,
+          "std": 0.0242
+        },
+        "hits_at_1": {
+          "mean": 0.1685,
+          "std": 0.031
+        },
+        "hits_at_3": {
+          "mean": 0.4694,
+          "std": 0.0309
+        },
+        "hits_at_10": {
+          "mean": 0.7847,
+          "std": 0.0198
+        }
+      },
+      "seed_stability_spearman": {
+        "mean": 0.8296,
+        "std": 0.0101
+      },
+      "vs_feature_baseline": {
+        "spearman": 0.5451,
+        "top3_overlap": 0.2754
+      }
+    },
+    "RotatE": {
+      "config": {
+        "model": "RotatE",
+        "embedding_dim": 64,
+        "epochs": 300,
+        "batch_size": 128,
+        "learning_rate": 0.01,
+        "negatives_per_positive": 10
+      },
+      "link_prediction": {
+        "mrr": {
+          "mean": 0.3446,
+          "std": 0.0215
+        },
+        "hits_at_1": {
+          "mean": 0.1613,
+          "std": 0.0263
+        },
+        "hits_at_3": {
+          "mean": 0.4162,
+          "std": 0.0264
+        },
+        "hits_at_10": {
+          "mean": 0.7802,
+          "std": 0.0183
+        }
+      },
+      "seed_stability_spearman": {
+        "mean": 0.9088,
+        "std": 0.0041
+      },
+      "vs_feature_baseline": {
+        "spearman": 0.5693,
+        "top3_overlap": 0.4058
+      }
+    }
+  },
+  "serving_model": "TransE",
+  "completion": {
+    "TransE": {
+      "hidden_facts": 143,
+      "accuracy": 0.4125874125874126,
+      "majority_baseline": 0.2097902097902098,
+      "off_by_two": 0.15384615384615385
+    },
+    "RotatE": {
+      "hidden_facts": 143,
+      "accuracy": 0.4825174825174825,
+      "majority_baseline": 0.2097902097902098,
+      "off_by_two": 0.14685314685314685
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "ingested": "2026-09-26",
+  "osm_snapshot": "2026-09-26",
+  "indicator_years": {
+    "area_km2": 2025,
+    "avg_age": 2025,
+    "cars_per_1000": 2024,
+    "cycle_path_km": 2024,
+    "families_cohabiting_children": 2024,
+    "families_cohabiting_no_children": 2024,
+    "families_married_children": 2024,
+    "families_married_no_children": 2024,
+    "families_single_father": 2024,
+    "families_single_mother": 2024,
+    "gps_per_1000": 2024,
+    "net_income": 2021,
+    "overnight_stays_per_1000": 2024,
+    "pct_tertiary_education": 2023,
+    "pedestrian_zone_m2": 2024,
+    "people_cohabiting_household": 2024,
+    "people_married_household": 2024,
+    "people_shared_household": 2024,
+    "people_single_father_household": 2024,
+    "people_single_household": 2024,
+    "people_single_mother_household": 2024,
+    "pharmacies_per_1000": 2024,
+    "population": 2025,
+    "population_density": 2025,
+    "road_area_m2": 2024,
+    "specialists_per_1000": 2024,
+    "unemployed_per_1000": 2023
+  }
+}

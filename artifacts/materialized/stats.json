@@ -1,0 +1,21 @@
+{
+  "derived_facts": 1889565,
+  "seconds": 16.76,
+  "exported": {
+    "adjacent": 112,
+    "districtName": 23,
+    "districtTime": 529,
+    "evidence": 235,
+    "feature": 713,
+    "hub": 23,
+    "level": 713,
+    "locationConflict": 31,
+    "offers": 124,
+    "rank": 713,
+    "sportVenue": 3003,
+    "sportVenues": 138,
+    "subwayLine": 39,
+    "travelTime": 36639,
+    "venues": 184
+  }
+}

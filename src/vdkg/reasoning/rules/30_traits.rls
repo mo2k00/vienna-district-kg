@@ -1,0 +1,53 @@
+% Feature levels by rank among all districts (terciles), and what each district offers.
+
+below(?D, ?F, #count(?E)) :- feature(?D, ?F, ?X), feature(?E, ?F, ?Y), ?Y < ?X.
+hasBelow(?D, ?F) :- below(?D, ?F, ?N).
+rank(?D, ?F, ?N) :- below(?D, ?F, ?N).
+rank(?D, ?F, 0) :- feature(?D, ?F, ?X), ~hasBelow(?D, ?F).
+
+level(?D, ?F, "high") :- rank(?D, ?F, ?R), ?R >= 15.
+level(?D, ?F, "medium") :- rank(?D, ?F, ?R), ?R > 7, ?R < 15.
+level(?D, ?F, "low") :- rank(?D, ?F, ?R), ?R <= 7.
+
+% Preference definitions: signal(Preference, Feature, Level), required(Preference, MinSignals).
+signal("going_out", "nightlife_per_km2", "high").
+signal("food", "food_per_km2", "high").
+signal("sport_tennis", "tennis_per_10k", "high").
+signal("sport_football", "football_per_10k", "high").
+signal("sport_basketball", "basketball_per_10k", "high").
+signal("sport_volleyball", "volleyball_per_10k", "high").
+signal("sport_fitness", "fitness_per_10k", "high").
+signal("sport_swimming", "swimming_per_10k", "high").
+signal("green_quiet", "park_share", "high").
+signal("green_quiet", "population_density", "low").
+signal("green_quiet", "road_share", "low").
+signal("family", "kindergartens_per_10k", "high").
+signal("family", "playgrounds_per_10k", "high").
+signal("family", "families_with_children_share", "high").
+signal("family", "park_share", "high").
+signal("students", "universities", "high").
+signal("students", "single_household_share", "high").
+signal("students", "avg_age", "low").
+signal("students", "nightlife_per_km2", "high").
+signal("culture", "museums", "high").
+signal("culture", "overnight_stays_per_1000", "high").
+signal("well_connected", "minutes_to_centre", "low").
+signal("well_connected", "subway_lines", "high").
+signal("well_connected", "stations_per_km2", "high").
+signal("car_free", "cars_per_1000", "low").
+signal("car_free", "cycle_km_per_km2", "high").
+signal("car_free", "stations_per_km2", "high").
+signal("healthcare", "gps_per_1000", "high").
+signal("healthcare", "specialists_per_1000", "high").
+signal("healthcare", "pharmacies_per_1000", "high").
+
+required("going_out", 1). required("food", 1).
+required("sport_tennis", 1). required("sport_football", 1). required("sport_basketball", 1).
+required("sport_volleyball", 1). required("sport_fitness", 1). required("sport_swimming", 1).
+required("green_quiet", 2). required("family", 2). required("students", 2).
+required("culture", 1). required("well_connected", 2). required("car_free", 2).
+required("healthcare", 2).
+
+evidence(?D, ?P, ?F, ?L) :- signal(?P, ?F, ?L), level(?D, ?F, ?L).
+signalHits(?D, ?P, #count(?F)) :- evidence(?D, ?P, ?F, ?L).
+offers(?D, ?P) :- signalHits(?D, ?P, ?N), required(?P, ?K), ?N >= ?K.

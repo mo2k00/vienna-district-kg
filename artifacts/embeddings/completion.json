@@ -1,0 +1,3466 @@
+[
+  {
+    "model": "TransE",
+    "seed": 0,
+    "hidden_facts": 143,
+    "accuracy": 0.4125874125874126,
+    "majority_baseline": 0.2097902097902098,
+    "off_by_two": 0.15384615384615385,
+    "link_prediction": {
+      "mrr": 0.43034863471984863,
+      "hits_at_1": 0.24475524475524477,
+      "hits_at_3": 0.5384615384615384,
+      "hits_at_10": 0.7867132867132867
+    },
+    "predictions": [
+      {
+        "district": "d17",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.603902816772461,
+          "medium": -11.621140480041504,
+          "high": -10.562215805053711
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "food_per_km2",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.394845008850098,
+          "medium": -11.406808853149414,
+          "high": -12.075116157531738
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.597587585449219,
+          "medium": -12.406888008117676,
+          "high": -12.72114372253418
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.365975379943848,
+          "medium": -11.99148941040039,
+          "high": -11.96235466003418
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "road_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.271671295166016,
+          "medium": -10.481254577636719,
+          "high": -11.566548347473145
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.404629707336426,
+          "medium": -10.258183479309082,
+          "high": -13.199347496032715
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "pct_tertiary_education",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.925180435180664,
+          "medium": -10.538286209106445,
+          "high": -9.91653060913086
+        },
+        "correct": true
+      },
+      {
+        "district": "d18",
+        "feature": "basketball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.624361991882324,
+          "medium": -11.725844383239746,
+          "high": -12.206734657287598
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.18040657043457,
+          "medium": -11.415091514587402,
+          "high": -12.5340576171875
+        },
+        "correct": true
+      },
+      {
+        "district": "d17",
+        "feature": "cycle_km_per_km2",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.244285583496094,
+          "medium": -10.205253601074219,
+          "high": -11.814255714416504
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.091402053833008,
+          "medium": -13.664382934570312,
+          "high": -12.44533920288086
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -14.69482135772705,
+          "medium": -13.279950141906738,
+          "high": -12.444705963134766
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "pharmacies_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.264657020568848,
+          "medium": -12.557395935058594,
+          "high": -13.295985221862793
+        },
+        "correct": true
+      },
+      {
+        "district": "d11",
+        "feature": "population_density",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.557891845703125,
+          "medium": -11.844833374023438,
+          "high": -11.857857704162598
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "universities",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.510453224182129,
+          "medium": -14.385135650634766,
+          "high": -13.460375785827637
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.537425994873047,
+          "medium": -10.600245475769043,
+          "high": -10.756513595581055
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "gps_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.733865737915039,
+          "medium": -11.481100082397461,
+          "high": -13.31467342376709
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "single_household_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.515559196472168,
+          "medium": -12.12230110168457,
+          "high": -12.342368125915527
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "park_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.617326736450195,
+          "medium": -11.27055835723877,
+          "high": -12.159015655517578
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "tennis_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.54201889038086,
+          "medium": -11.655145645141602,
+          "high": -11.2748441696167
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "families_with_children_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.010587692260742,
+          "medium": -10.624281883239746,
+          "high": -12.662211418151855
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "net_income",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.607820510864258,
+          "medium": -12.225223541259766,
+          "high": -10.034049034118652
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "avg_age",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.528268814086914,
+          "medium": -11.331976890563965,
+          "high": -9.739867210388184
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.462058067321777,
+          "medium": -12.995649337768555,
+          "high": -12.887508392333984
+        },
+        "correct": false
+      },
+      {
+        "district": "d14",
+        "feature": "unemployed_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.701897621154785,
+          "medium": -11.412383079528809,
+          "high": -13.848705291748047
+        },
+        "correct": true
+      },
+      {
+        "district": "d01",
+        "feature": "pharmacies_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.95419979095459,
+          "medium": -12.399972915649414,
+          "high": -11.90269947052002
+        },
+        "correct": true
+      },
+      {
+        "district": "d22",
+        "feature": "stations_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.244189262390137,
+          "medium": -11.596183776855469,
+          "high": -13.432242393493652
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "cars_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.334856986999512,
+          "medium": -11.087061882019043,
+          "high": -10.940964698791504
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "subway_lines",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.873923301696777,
+          "medium": -12.643747329711914,
+          "high": -13.167314529418945
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "basketball_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.737077713012695,
+          "medium": -12.803897857666016,
+          "high": -11.786026000976562
+        },
+        "correct": true
+      },
+      {
+        "district": "d06",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.921001434326172,
+          "medium": -11.24455451965332,
+          "high": -12.329954147338867
+        },
+        "correct": true
+      },
+      {
+        "district": "d14",
+        "feature": "specialists_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.698970794677734,
+          "medium": -12.159350395202637,
+          "high": -12.535870552062988
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "specialists_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.286079406738281,
+          "medium": -11.669695854187012,
+          "high": -13.310501098632812
+        },
+        "correct": true
+      },
+      {
+        "district": "d01",
+        "feature": "nightlife_per_km2",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.553760528564453,
+          "medium": -12.4481201171875,
+          "high": -11.229764938354492
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.823221206665039,
+          "medium": -12.054383277893066,
+          "high": -13.121191024780273
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "food_per_km2",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.160065650939941,
+          "medium": -11.845694541931152,
+          "high": -13.08735179901123
+        },
+        "correct": true
+      },
+      {
+        "district": "d02",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.80249309539795,
+          "medium": -11.431991577148438,
+          "high": -10.668946266174316
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "pharmacies_per_1000",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.555715560913086,
+          "medium": -12.285730361938477,
+          "high": -13.037027359008789
+        },
+        "correct": false
+      },
+      {
+        "district": "d23",
+        "feature": "park_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.121298789978027,
+          "medium": -12.408427238464355,
+          "high": -13.854429244995117
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.049638748168945,
+          "medium": -11.079490661621094,
+          "high": -11.304757118225098
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "football_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.93799877166748,
+          "medium": -10.895594596862793,
+          "high": -10.173665046691895
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "kindergartens_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.19682788848877,
+          "medium": -11.219112396240234,
+          "high": -12.869230270385742
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "playgrounds_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.413039207458496,
+          "medium": -12.066963195800781,
+          "high": -14.372034072875977
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "cycle_km_per_km2",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.317954063415527,
+          "medium": -9.647575378417969,
+          "high": -10.99209213256836
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "swimming_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.072516441345215,
+          "medium": -10.367490768432617,
+          "high": -12.312870025634766
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.972794532775879,
+          "medium": -12.684720039367676,
+          "high": -15.200424194335938
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "volleyball_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.748741149902344,
+          "medium": -10.21461296081543,
+          "high": -11.226994514465332
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.990062713623047,
+          "medium": -11.435234069824219,
+          "high": -12.555657386779785
+        },
+        "correct": false
+      },
+      {
+        "district": "d14",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.745874404907227,
+          "medium": -11.602396011352539,
+          "high": -11.087767601013184
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "subway_lines",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.326216697692871,
+          "medium": -12.907129287719727,
+          "high": -13.759337425231934
+        },
+        "correct": false
+      },
+      {
+        "district": "d14",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.051491737365723,
+          "medium": -11.29655647277832,
+          "high": -12.675775527954102
+        },
+        "correct": true
+      },
+      {
+        "district": "d16",
+        "feature": "volleyball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.559652328491211,
+          "medium": -10.95492935180664,
+          "high": -11.8930025100708
+        },
+        "correct": true
+      },
+      {
+        "district": "d15",
+        "feature": "unemployed_per_1000",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.63774299621582,
+          "medium": -11.609087944030762,
+          "high": -14.15380573272705
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "football_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.466053009033203,
+          "medium": -11.700778007507324,
+          "high": -9.530194282531738
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "swimming_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.387589454650879,
+          "medium": -11.450604438781738,
+          "high": -11.370885848999023
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.48143196105957,
+          "medium": -13.631494522094727,
+          "high": -14.505022048950195
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "road_share",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.232398986816406,
+          "medium": -10.72186279296875,
+          "high": -11.976028442382812
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "park_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.8844633102417,
+          "medium": -11.893162727355957,
+          "high": -12.339080810546875
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "population_density",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.120390892028809,
+          "medium": -13.131563186645508,
+          "high": -11.158778190612793
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "basketball_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -9.686981201171875,
+          "medium": -12.122576713562012,
+          "high": -12.07182502746582
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.907950401306152,
+          "medium": -11.358777046203613,
+          "high": -11.586277961730957
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.630736351013184,
+          "medium": -12.331561088562012,
+          "high": -10.063518524169922
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "nightlife_per_km2",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.478523254394531,
+          "medium": -12.653311729431152,
+          "high": -12.595416069030762
+        },
+        "correct": false
+      },
+      {
+        "district": "d04",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.05143928527832,
+          "medium": -12.8665132522583,
+          "high": -11.223459243774414
+        },
+        "correct": true
+      },
+      {
+        "district": "d01",
+        "feature": "population_density",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.973859786987305,
+          "medium": -12.712766647338867,
+          "high": -10.823596000671387
+        },
+        "correct": false
+      },
+      {
+        "district": "d17",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.777435302734375,
+          "medium": -12.190675735473633,
+          "high": -13.907062530517578
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.480790138244629,
+          "medium": -10.536450386047363,
+          "high": -13.803567886352539
+        },
+        "correct": true
+      },
+      {
+        "district": "d13",
+        "feature": "stations_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.374517440795898,
+          "medium": -11.784224510192871,
+          "high": -13.665183067321777
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -13.520174026489258,
+          "medium": -11.752861022949219,
+          "high": -10.95010757446289
+        },
+        "correct": true
+      },
+      {
+        "district": "d07",
+        "feature": "cycle_km_per_km2",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -13.51421070098877,
+          "medium": -10.474299430847168,
+          "high": -10.00861644744873
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "football_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.09679889678955,
+          "medium": -12.1423921585083,
+          "high": -10.82844066619873
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "pct_tertiary_education",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.610342025756836,
+          "medium": -10.867985725402832,
+          "high": -11.853604316711426
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.314475059509277,
+          "medium": -11.299028396606445,
+          "high": -10.098037719726562
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "subway_lines",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -12.885809898376465,
+          "medium": -12.958192825317383,
+          "high": -14.46838092803955
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "food_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.113545417785645,
+          "medium": -11.537077903747559,
+          "high": -12.296974182128906
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "kindergartens_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.230605125427246,
+          "medium": -10.411399841308594,
+          "high": -12.15479564666748
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "museums",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.655794143676758,
+          "medium": -11.312819480895996,
+          "high": -13.0512113571167
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "cars_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.910927772521973,
+          "medium": -12.163909912109375,
+          "high": -10.057755470275879
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.472856521606445,
+          "medium": -11.955718994140625,
+          "high": -10.419157981872559
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.121905326843262,
+          "medium": -10.969660758972168,
+          "high": -12.095207214355469
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "tennis_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.970649719238281,
+          "medium": -11.567851066589355,
+          "high": -10.515408515930176
+        },
+        "correct": true
+      },
+      {
+        "district": "d13",
+        "feature": "volleyball_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.12645149230957,
+          "medium": -11.274076461791992,
+          "high": -12.019344329833984
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "single_household_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.465933799743652,
+          "medium": -10.46728801727295,
+          "high": -12.11326789855957
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "pharmacies_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.66761302947998,
+          "medium": -11.41250991821289,
+          "high": -13.60705280303955
+        },
+        "correct": true
+      },
+      {
+        "district": "d11",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.40500259399414,
+          "medium": -10.608896255493164,
+          "high": -11.767674446105957
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.402361869812012,
+          "medium": -12.24907112121582,
+          "high": -9.909276008605957
+        },
+        "correct": true
+      },
+      {
+        "district": "d02",
+        "feature": "schools_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.472214698791504,
+          "medium": -10.364970207214355,
+          "high": -10.50252628326416
+        },
+        "correct": true
+      },
+      {
+        "district": "d17",
+        "feature": "volleyball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.225743293762207,
+          "medium": -11.579980850219727,
+          "high": -11.803350448608398
+        },
+        "correct": false
+      },
+      {
+        "district": "d23",
+        "feature": "swimming_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.428460121154785,
+          "medium": -10.986040115356445,
+          "high": -12.003765106201172
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "pct_tertiary_education",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.950191497802734,
+          "medium": -11.199459075927734,
+          "high": -12.011068344116211
+        },
+        "correct": true
+      },
+      {
+        "district": "d08",
+        "feature": "fitness_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.903587341308594,
+          "medium": -10.874688148498535,
+          "high": -11.291910171508789
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "playgrounds_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.531578063964844,
+          "medium": -12.746273040771484,
+          "high": -13.345637321472168
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.171427726745605,
+          "medium": -10.41014289855957,
+          "high": -11.99935245513916
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "nightlife_per_km2",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -13.161507606506348,
+          "medium": -13.947412490844727,
+          "high": -13.294662475585938
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "unemployed_per_1000",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.843223571777344,
+          "medium": -11.592885971069336,
+          "high": -13.464884757995605
+        },
+        "correct": false
+      },
+      {
+        "district": "d20",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -13.115355491638184,
+          "medium": -12.721951484680176,
+          "high": -12.105916976928711
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.115406036376953,
+          "medium": -11.871767044067383,
+          "high": -9.603550910949707
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "road_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.954623222351074,
+          "medium": -10.68222427368164,
+          "high": -11.439306259155273
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "unemployed_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.255000114440918,
+          "medium": -10.37581729888916,
+          "high": -13.08432674407959
+        },
+        "correct": true
+      },
+      {
+        "district": "d02",
+        "feature": "minutes_to_centre",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.97065258026123,
+          "medium": -13.167778968811035,
+          "high": -12.751496315002441
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "families_with_children_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.976502418518066,
+          "medium": -11.76078987121582,
+          "high": -12.130327224731445
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.30605411529541,
+          "medium": -11.173653602600098,
+          "high": -11.249643325805664
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "tennis_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.5064058303833,
+          "medium": -10.966014862060547,
+          "high": -11.67050838470459
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.742022514343262,
+          "medium": -12.665119171142578,
+          "high": -12.909095764160156
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.153349876403809,
+          "medium": -12.350162506103516,
+          "high": -13.165873527526855
+        },
+        "correct": false
+      },
+      {
+        "district": "d04",
+        "feature": "cars_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.775009155273438,
+          "medium": -12.33926010131836,
+          "high": -12.089362144470215
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.319271087646484,
+          "medium": -11.431126594543457,
+          "high": -10.333498001098633
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.3251314163208,
+          "medium": -13.200167655944824,
+          "high": -13.893502235412598
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "gps_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.813464164733887,
+          "medium": -11.442326545715332,
+          "high": -10.455668449401855
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.263775825500488,
+          "medium": -12.537837028503418,
+          "high": -11.623414039611816
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "basketball_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -9.79716682434082,
+          "medium": -12.25960636138916,
+          "high": -11.461965560913086
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.454427719116211,
+          "medium": -11.680989265441895,
+          "high": -11.183236122131348
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.087080001831055,
+          "medium": -11.098987579345703,
+          "high": -10.330764770507812
+        },
+        "correct": true
+      },
+      {
+        "district": "d11",
+        "feature": "museums",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.382076263427734,
+          "medium": -12.126208305358887,
+          "high": -12.157624244689941
+        },
+        "correct": true
+      },
+      {
+        "district": "d08",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.522357940673828,
+          "medium": -11.87939739227295,
+          "high": -10.0967435836792
+        },
+        "correct": true
+      },
+      {
+        "district": "d13",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.76306438446045,
+          "medium": -11.951172828674316,
+          "high": -11.517989158630371
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "avg_age",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.416703224182129,
+          "medium": -11.385003089904785,
+          "high": -10.583826065063477
+        },
+        "correct": false
+      },
+      {
+        "district": "d20",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.54710865020752,
+          "medium": -13.118728637695312,
+          "high": -13.525269508361816
+        },
+        "correct": true
+      },
+      {
+        "district": "d08",
+        "feature": "cycle_km_per_km2",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -13.89222526550293,
+          "medium": -10.379802703857422,
+          "high": -10.499811172485352
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.05770492553711,
+          "medium": -11.330726623535156,
+          "high": -9.693164825439453
+        },
+        "correct": true
+      },
+      {
+        "district": "d16",
+        "feature": "stations_per_km2",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -11.56843090057373,
+          "medium": -11.37744426727295,
+          "high": -11.200032234191895
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.983549118041992,
+          "medium": -11.683602333068848,
+          "high": -10.631904602050781
+        },
+        "correct": false
+      },
+      {
+        "district": "d07",
+        "feature": "cars_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.881332397460938,
+          "medium": -11.609560012817383,
+          "high": -10.239945411682129
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.442395210266113,
+          "medium": -11.384100914001465,
+          "high": -13.78376293182373
+        },
+        "correct": false
+      },
+      {
+        "district": "d04",
+        "feature": "kindergartens_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.87630558013916,
+          "medium": -11.092424392700195,
+          "high": -11.506305694580078
+        },
+        "correct": false
+      },
+      {
+        "district": "d17",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.668896675109863,
+          "medium": -12.449199676513672,
+          "high": -11.949224472045898
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "kindergartens_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.37757682800293,
+          "medium": -10.762504577636719,
+          "high": -12.375466346740723
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "schools_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.96810245513916,
+          "medium": -11.314227104187012,
+          "high": -11.78370189666748
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "stations_per_km2",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.501447677612305,
+          "medium": -11.236939430236816,
+          "high": -11.271315574645996
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "schools_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.5206298828125,
+          "medium": -11.567021369934082,
+          "high": -10.834396362304688
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -10.503843307495117,
+          "medium": -11.364808082580566,
+          "high": -12.466340065002441
+        },
+        "correct": true
+      },
+      {
+        "district": "d04",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.338333129882812,
+          "medium": -11.991518020629883,
+          "high": -13.0325288772583
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "museums",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.715280532836914,
+          "medium": -11.086424827575684,
+          "high": -11.606423377990723
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.15379810333252,
+          "medium": -11.069046974182129,
+          "high": -11.431273460388184
+        },
+        "correct": false
+      },
+      {
+        "district": "d23",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.824295997619629,
+          "medium": -12.78421401977539,
+          "high": -11.593179702758789
+        },
+        "correct": true
+      },
+      {
+        "district": "d14",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -12.33163833618164,
+          "medium": -11.917449951171875,
+          "high": -12.04629135131836
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "football_per_10k",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.699089050292969,
+          "medium": -11.292671203613281,
+          "high": -9.407425880432129
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "museums",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.105639457702637,
+          "medium": -10.966312408447266,
+          "high": -11.699734687805176
+        },
+        "correct": false
+      },
+      {
+        "district": "d04",
+        "feature": "volleyball_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -11.887991905212402,
+          "medium": -11.915841102600098,
+          "high": -11.956613540649414
+        },
+        "correct": true
+      },
+      {
+        "district": "d06",
+        "feature": "stations_per_km2",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -13.312273979187012,
+          "medium": -11.85140609741211,
+          "high": -11.569415092468262
+        },
+        "correct": true
+      },
+      {
+        "district": "d06",
+        "feature": "families_with_children_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -11.734472274780273,
+          "medium": -11.14909839630127,
+          "high": -13.422005653381348
+        },
+        "correct": false
+      },
+      {
+        "district": "d07",
+        "feature": "pct_tertiary_education",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -10.885517120361328,
+          "medium": -9.985595703125,
+          "high": -10.161995887756348
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "schools_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -12.362397193908691,
+          "medium": -11.973368644714355,
+          "high": -9.94804573059082
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "model": "RotatE",
+    "seed": 0,
+    "hidden_facts": 143,
+    "accuracy": 0.4825174825174825,
+    "majority_baseline": 0.2097902097902098,
+    "off_by_two": 0.14685314685314685,
+    "link_prediction": {
+      "mrr": 0.3632791042327881,
+      "hits_at_1": 0.1993006993006993,
+      "hits_at_3": 0.4020979020979021,
+      "hits_at_10": 0.7727272727272727
+    },
+    "predictions": [
+      {
+        "district": "d17",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.313146591186523,
+          "medium": -7.162550926208496,
+          "high": -7.312046051025391
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "food_per_km2",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.648808002471924,
+          "medium": -7.785980701446533,
+          "high": -7.683858394622803
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.669178009033203,
+          "medium": -7.175898551940918,
+          "high": -7.826249599456787
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.46834135055542,
+          "medium": -7.565410614013672,
+          "high": -7.99205207824707
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "road_share",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.993896961212158,
+          "medium": -7.525302886962891,
+          "high": -7.4033074378967285
+        },
+        "correct": true
+      },
+      {
+        "district": "d11",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.61266565322876,
+          "medium": -7.5678839683532715,
+          "high": -7.952042579650879
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "pct_tertiary_education",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.527614593505859,
+          "medium": -7.511041164398193,
+          "high": -7.743344783782959
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "basketball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.619749546051025,
+          "medium": -7.594980716705322,
+          "high": -8.054473876953125
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.551910400390625,
+          "medium": -7.818350791931152,
+          "high": -7.750592231750488
+        },
+        "correct": false
+      },
+      {
+        "district": "d17",
+        "feature": "cycle_km_per_km2",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.254162788391113,
+          "medium": -7.166168689727783,
+          "high": -7.373488426208496
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.207961082458496,
+          "medium": -8.3494234085083,
+          "high": -7.122320175170898
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.001927375793457,
+          "medium": -7.980991363525391,
+          "high": -7.043081760406494
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "pharmacies_per_1000",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.433749198913574,
+          "medium": -7.418307781219482,
+          "high": -7.503515720367432
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "population_density",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -6.831597805023193,
+          "medium": -7.603584289550781,
+          "high": -7.579128742218018
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "universities",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.284511089324951,
+          "medium": -7.7208662033081055,
+          "high": -7.612793922424316
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.833733558654785,
+          "medium": -7.380659580230713,
+          "high": -7.5269856452941895
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "gps_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.480173110961914,
+          "medium": -7.5176825523376465,
+          "high": -7.749232292175293
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "single_household_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.3797688484191895,
+          "medium": -7.145214080810547,
+          "high": -7.556063652038574
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "park_share",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.81885290145874,
+          "medium": -7.606101036071777,
+          "high": -7.424431324005127
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "tennis_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.614668846130371,
+          "medium": -7.888110637664795,
+          "high": -7.481257915496826
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "families_with_children_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.677826881408691,
+          "medium": -7.5405354499816895,
+          "high": -7.676730632781982
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "net_income",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.54742956161499,
+          "medium": -7.412537574768066,
+          "high": -7.5018792152404785
+        },
+        "correct": true
+      },
+      {
+        "district": "d09",
+        "feature": "avg_age",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.793705940246582,
+          "medium": -7.896513938903809,
+          "high": -7.28223991394043
+        },
+        "correct": false
+      },
+      {
+        "district": "d22",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.552734851837158,
+          "medium": -7.947300434112549,
+          "high": -7.612637042999268
+        },
+        "correct": false
+      },
+      {
+        "district": "d14",
+        "feature": "unemployed_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.184916019439697,
+          "medium": -7.800905704498291,
+          "high": -7.353877544403076
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "pharmacies_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.552238464355469,
+          "medium": -7.489687919616699,
+          "high": -7.317082405090332
+        },
+        "correct": true
+      },
+      {
+        "district": "d22",
+        "feature": "stations_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.300390243530273,
+          "medium": -7.384381294250488,
+          "high": -8.047088623046875
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "cars_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.5853471755981445,
+          "medium": -8.241891860961914,
+          "high": -7.6829986572265625
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "subway_lines",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.535132884979248,
+          "medium": -7.892247200012207,
+          "high": -7.238699913024902
+        },
+        "correct": true
+      },
+      {
+        "district": "d09",
+        "feature": "basketball_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.826713562011719,
+          "medium": -7.480026721954346,
+          "high": -7.79524040222168
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -8.255110740661621,
+          "medium": -7.24989652633667,
+          "high": -7.558271884918213
+        },
+        "correct": true
+      },
+      {
+        "district": "d14",
+        "feature": "specialists_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.515868663787842,
+          "medium": -7.595126628875732,
+          "high": -7.63955020904541
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "specialists_per_1000",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.503452301025391,
+          "medium": -7.396881580352783,
+          "high": -8.705747604370117
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "nightlife_per_km2",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.517892837524414,
+          "medium": -7.503780841827393,
+          "high": -7.392340183258057
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "park_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.532658100128174,
+          "medium": -7.359150409698486,
+          "high": -7.695685386657715
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "food_per_km2",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.801803112030029,
+          "medium": -7.265161991119385,
+          "high": -7.878546237945557
+        },
+        "correct": true
+      },
+      {
+        "district": "d02",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.346621036529541,
+          "medium": -7.765528678894043,
+          "high": -7.306891441345215
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "pharmacies_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.1281843185424805,
+          "medium": -7.503970623016357,
+          "high": -8.108057975769043
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "park_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.479999542236328,
+          "medium": -7.752920627593994,
+          "high": -7.98487663269043
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.499659061431885,
+          "medium": -7.8181939125061035,
+          "high": -7.525378227233887
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "football_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.474426746368408,
+          "medium": -7.572970390319824,
+          "high": -7.20044469833374
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "kindergartens_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.177550315856934,
+          "medium": -7.688253879547119,
+          "high": -8.225213050842285
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "playgrounds_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.41555118560791,
+          "medium": -7.625064373016357,
+          "high": -7.965112209320068
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "cycle_km_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.462944507598877,
+          "medium": -7.764326572418213,
+          "high": -7.644314765930176
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "swimming_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.492983341217041,
+          "medium": -7.4486517906188965,
+          "high": -8.161650657653809
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.421064853668213,
+          "medium": -7.610198974609375,
+          "high": -7.529060363769531
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "volleyball_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.70867919921875,
+          "medium": -7.457884788513184,
+          "high": -7.330316543579102
+        },
+        "correct": true
+      },
+      {
+        "district": "d11",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.266488075256348,
+          "medium": -7.430893421173096,
+          "high": -7.938455581665039
+        },
+        "correct": true
+      },
+      {
+        "district": "d14",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.848333358764648,
+          "medium": -7.634063243865967,
+          "high": -7.799475193023682
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "subway_lines",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.704288482666016,
+          "medium": -7.777543544769287,
+          "high": -8.172264099121094
+        },
+        "correct": false
+      },
+      {
+        "district": "d14",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.502715110778809,
+          "medium": -7.62138557434082,
+          "high": -7.815995216369629
+        },
+        "correct": true
+      },
+      {
+        "district": "d16",
+        "feature": "volleyball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.479409694671631,
+          "medium": -7.591444492340088,
+          "high": -7.510823726654053
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "unemployed_per_1000",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.313834190368652,
+          "medium": -7.333488464355469,
+          "high": -7.473535537719727
+        },
+        "correct": false
+      },
+      {
+        "district": "d15",
+        "feature": "football_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.356429576873779,
+          "medium": -7.730157852172852,
+          "high": -7.162069320678711
+        },
+        "correct": false
+      },
+      {
+        "district": "d18",
+        "feature": "swimming_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.446293354034424,
+          "medium": -7.683135986328125,
+          "high": -7.328418254852295
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.424527645111084,
+          "medium": -7.6521992683410645,
+          "high": -7.713065147399902
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "road_share",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.4977006912231445,
+          "medium": -7.789611339569092,
+          "high": -7.580301284790039
+        },
+        "correct": false
+      },
+      {
+        "district": "d10",
+        "feature": "park_share",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.895283222198486,
+          "medium": -7.774324893951416,
+          "high": -7.9070587158203125
+        },
+        "correct": false
+      },
+      {
+        "district": "d05",
+        "feature": "population_density",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.609788417816162,
+          "medium": -7.670732498168945,
+          "high": -7.3475189208984375
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "basketball_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.5577921867370605,
+          "medium": -7.63484525680542,
+          "high": -8.10965347290039
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.834285259246826,
+          "medium": -7.266091346740723,
+          "high": -7.607696056365967
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.028007507324219,
+          "medium": -8.040706634521484,
+          "high": -7.641425132751465
+        },
+        "correct": false
+      },
+      {
+        "district": "d03",
+        "feature": "nightlife_per_km2",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.906698226928711,
+          "medium": -7.343330383300781,
+          "high": -7.605380058288574
+        },
+        "correct": true
+      },
+      {
+        "district": "d04",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.525566577911377,
+          "medium": -7.3671393394470215,
+          "high": -7.451501846313477
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "population_density",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.33885383605957,
+          "medium": -7.536167144775391,
+          "high": -7.207208633422852
+        },
+        "correct": false
+      },
+      {
+        "district": "d17",
+        "feature": "subway_lines",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.181071758270264,
+          "medium": -7.324357032775879,
+          "high": -7.882370948791504
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.347820281982422,
+          "medium": -7.300285816192627,
+          "high": -8.623754501342773
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "stations_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.247498512268066,
+          "medium": -7.267719745635986,
+          "high": -7.813149452209473
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.158390998840332,
+          "medium": -7.707934379577637,
+          "high": -7.267659664154053
+        },
+        "correct": true
+      },
+      {
+        "district": "d07",
+        "feature": "cycle_km_per_km2",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.393301963806152,
+          "medium": -7.939586162567139,
+          "high": -7.5402936935424805
+        },
+        "correct": true
+      },
+      {
+        "district": "d10",
+        "feature": "football_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.612256050109863,
+          "medium": -8.203117370605469,
+          "high": -7.208103179931641
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "pct_tertiary_education",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.673155784606934,
+          "medium": -7.757005214691162,
+          "high": -7.658962249755859
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.709499359130859,
+          "medium": -7.31638765335083,
+          "high": -7.730249404907227
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "subway_lines",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.691512107849121,
+          "medium": -7.665733814239502,
+          "high": -7.7855024337768555
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "food_per_km2",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.36703634262085,
+          "medium": -7.840684413909912,
+          "high": -8.017159461975098
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "kindergartens_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.741508483886719,
+          "medium": -7.512583255767822,
+          "high": -8.029958724975586
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "museums",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.030094623565674,
+          "medium": -7.673838138580322,
+          "high": -8.39715576171875
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "cars_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.7897443771362305,
+          "medium": -8.112600326538086,
+          "high": -7.743161201477051
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.783849716186523,
+          "medium": -7.3840179443359375,
+          "high": -7.5263590812683105
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "single_household_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.280721187591553,
+          "medium": -7.344093322753906,
+          "high": -7.5330023765563965
+        },
+        "correct": true
+      },
+      {
+        "district": "d22",
+        "feature": "tennis_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.889122486114502,
+          "medium": -7.351966857910156,
+          "high": -7.777091026306152
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "volleyball_per_10k",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -8.20724868774414,
+          "medium": -6.986019611358643,
+          "high": -7.36332893371582
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "single_household_share",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.905923366546631,
+          "medium": -7.196033954620361,
+          "high": -7.705122470855713
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "pharmacies_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.375823974609375,
+          "medium": -7.453038692474365,
+          "high": -7.469189643859863
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "avg_age",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.491109848022461,
+          "medium": -7.7400102615356445,
+          "high": -8.383055686950684
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.624975204467773,
+          "medium": -7.869134426116943,
+          "high": -7.93082332611084
+        },
+        "correct": false
+      },
+      {
+        "district": "d02",
+        "feature": "schools_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.539918899536133,
+          "medium": -7.27852725982666,
+          "high": -7.314774036407471
+        },
+        "correct": true
+      },
+      {
+        "district": "d17",
+        "feature": "volleyball_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.5321760177612305,
+          "medium": -7.34909725189209,
+          "high": -7.324395656585693
+        },
+        "correct": false
+      },
+      {
+        "district": "d23",
+        "feature": "swimming_per_10k",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.158254623413086,
+          "medium": -7.564472675323486,
+          "high": -7.540404796600342
+        },
+        "correct": false
+      },
+      {
+        "district": "d23",
+        "feature": "pct_tertiary_education",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.6306915283203125,
+          "medium": -7.510533809661865,
+          "high": -7.675623416900635
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "fitness_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.770289897918701,
+          "medium": -7.744692325592041,
+          "high": -7.389672756195068
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "playgrounds_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.305284023284912,
+          "medium": -7.447803497314453,
+          "high": -7.7202558517456055
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "road_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.59841251373291,
+          "medium": -7.679819107055664,
+          "high": -8.36944580078125
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "nightlife_per_km2",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.7713470458984375,
+          "medium": -7.64545202255249,
+          "high": -7.656800746917725
+        },
+        "correct": true
+      },
+      {
+        "district": "d18",
+        "feature": "unemployed_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.291906356811523,
+          "medium": -7.631628513336182,
+          "high": -7.691728115081787
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.470734596252441,
+          "medium": -7.51155948638916,
+          "high": -7.342816352844238
+        },
+        "correct": false
+      },
+      {
+        "district": "d09",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.851740837097168,
+          "medium": -7.591691017150879,
+          "high": -7.194884300231934
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "road_share",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.777752876281738,
+          "medium": -7.55057430267334,
+          "high": -7.197940349578857
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "unemployed_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.648186206817627,
+          "medium": -7.428818702697754,
+          "high": -7.548136234283447
+        },
+        "correct": true
+      },
+      {
+        "district": "d02",
+        "feature": "minutes_to_centre",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.109753608703613,
+          "medium": -7.322421073913574,
+          "high": -7.465305805206299
+        },
+        "correct": true
+      },
+      {
+        "district": "d22",
+        "feature": "families_with_children_share",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.6496500968933105,
+          "medium": -7.718067169189453,
+          "high": -7.127165794372559
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.869773864746094,
+          "medium": -7.532081604003906,
+          "high": -7.452002048492432
+        },
+        "correct": true
+      },
+      {
+        "district": "d16",
+        "feature": "tennis_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.562057018280029,
+          "medium": -7.409695148468018,
+          "high": -8.141282081604004
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.478195667266846,
+          "medium": -7.773483753204346,
+          "high": -7.759836673736572
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.644918441772461,
+          "medium": -8.087789535522461,
+          "high": -7.449065685272217
+        },
+        "correct": true
+      },
+      {
+        "district": "d04",
+        "feature": "cars_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.376522064208984,
+          "medium": -7.91028356552124,
+          "high": -7.709451198577881
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.906949520111084,
+          "medium": -7.991957664489746,
+          "high": -7.448145389556885
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.442197322845459,
+          "medium": -7.539279937744141,
+          "high": -7.905962944030762
+        },
+        "correct": true
+      },
+      {
+        "district": "d19",
+        "feature": "gps_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.506887912750244,
+          "medium": -7.606590270996094,
+          "high": -7.314309120178223
+        },
+        "correct": true
+      },
+      {
+        "district": "d12",
+        "feature": "schools_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.401736736297607,
+          "medium": -8.012101173400879,
+          "high": -7.537808895111084
+        },
+        "correct": true
+      },
+      {
+        "district": "d15",
+        "feature": "basketball_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.628466606140137,
+          "medium": -7.6737494468688965,
+          "high": -7.768787384033203
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "specialists_per_1000",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.815475940704346,
+          "medium": -7.955404281616211,
+          "high": -7.639514923095703
+        },
+        "correct": true
+      },
+      {
+        "district": "d03",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -8.07450008392334,
+          "medium": -7.348409652709961,
+          "high": -7.810326099395752
+        },
+        "correct": false
+      },
+      {
+        "district": "d11",
+        "feature": "museums",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.693824291229248,
+          "medium": -7.8262529373168945,
+          "high": -7.671262264251709
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "net_income",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.628551483154297,
+          "medium": -7.599769592285156,
+          "high": -7.503537178039551
+        },
+        "correct": true
+      },
+      {
+        "district": "d13",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.2320966720581055,
+          "medium": -8.066783905029297,
+          "high": -7.443814754486084
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "avg_age",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.71134614944458,
+          "medium": -7.8006134033203125,
+          "high": -7.493683815002441
+        },
+        "correct": true
+      },
+      {
+        "district": "d20",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.537950038909912,
+          "medium": -7.762608051300049,
+          "high": -7.516098976135254
+        },
+        "correct": false
+      },
+      {
+        "district": "d08",
+        "feature": "cycle_km_per_km2",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.442109107971191,
+          "medium": -7.449253082275391,
+          "high": -7.80025053024292
+        },
+        "correct": false
+      },
+      {
+        "district": "d19",
+        "feature": "cars_per_1000",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.554452896118164,
+          "medium": -7.612037658691406,
+          "high": -7.564094543457031
+        },
+        "correct": false
+      },
+      {
+        "district": "d16",
+        "feature": "stations_per_km2",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.455281734466553,
+          "medium": -7.359131336212158,
+          "high": -7.4540252685546875
+        },
+        "correct": true
+      },
+      {
+        "district": "d18",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "high",
+        "scores": {
+          "low": -8.196236610412598,
+          "medium": -7.706728935241699,
+          "high": -7.356113433837891
+        },
+        "correct": false
+      },
+      {
+        "district": "d07",
+        "feature": "cars_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.470057964324951,
+          "medium": -8.009140014648438,
+          "high": -7.9953765869140625
+        },
+        "correct": true
+      },
+      {
+        "district": "d13",
+        "feature": "universities",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.415257930755615,
+          "medium": -7.187143802642822,
+          "high": -7.464717388153076
+        },
+        "correct": false
+      },
+      {
+        "district": "d04",
+        "feature": "kindergartens_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.752961158752441,
+          "medium": -7.612785339355469,
+          "high": -7.359525203704834
+        },
+        "correct": true
+      },
+      {
+        "district": "d17",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.7238264083862305,
+          "medium": -7.218599319458008,
+          "high": -7.169234275817871
+        },
+        "correct": true
+      },
+      {
+        "district": "d16",
+        "feature": "kindergartens_per_10k",
+        "true_level": "medium",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.24008321762085,
+          "medium": -7.385859489440918,
+          "high": -7.630125045776367
+        },
+        "correct": false
+      },
+      {
+        "district": "d21",
+        "feature": "schools_per_10k",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.643441200256348,
+          "medium": -7.316900730133057,
+          "high": -8.677597999572754
+        },
+        "correct": true
+      },
+      {
+        "district": "d05",
+        "feature": "stations_per_km2",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.64419412612915,
+          "medium": -7.357264041900635,
+          "high": -7.372905254364014
+        },
+        "correct": false
+      },
+      {
+        "district": "d13",
+        "feature": "schools_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.4852118492126465,
+          "medium": -7.819063186645508,
+          "high": -7.412023544311523
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.287059783935547,
+          "medium": -7.534555912017822,
+          "high": -7.804561138153076
+        },
+        "correct": true
+      },
+      {
+        "district": "d04",
+        "feature": "playgrounds_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.376479148864746,
+          "medium": -7.419541835784912,
+          "high": -7.53661584854126
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "museums",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.844528675079346,
+          "medium": -7.751368522644043,
+          "high": -7.779007911682129
+        },
+        "correct": true
+      },
+      {
+        "district": "d21",
+        "feature": "swimming_per_10k",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.8155035972595215,
+          "medium": -7.668554306030273,
+          "high": -7.1784515380859375
+        },
+        "correct": true
+      },
+      {
+        "district": "d23",
+        "feature": "minutes_to_centre",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.667710781097412,
+          "medium": -7.826864719390869,
+          "high": -7.391384601593018
+        },
+        "correct": true
+      },
+      {
+        "district": "d14",
+        "feature": "minutes_to_centre",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.361815452575684,
+          "medium": -7.541060447692871,
+          "high": -7.067434310913086
+        },
+        "correct": false
+      },
+      {
+        "district": "d12",
+        "feature": "football_per_10k",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.441380500793457,
+          "medium": -7.658318042755127,
+          "high": -7.6219563484191895
+        },
+        "correct": true
+      },
+      {
+        "district": "d09",
+        "feature": "museums",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -7.829268455505371,
+          "medium": -7.665799140930176,
+          "high": -7.4640655517578125
+        },
+        "correct": true
+      },
+      {
+        "district": "d04",
+        "feature": "volleyball_per_10k",
+        "true_level": "low",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.465062141418457,
+          "medium": -7.348505020141602,
+          "high": -7.709806442260742
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "stations_per_km2",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.89515495300293,
+          "medium": -7.445581912994385,
+          "high": -7.449640274047852
+        },
+        "correct": false
+      },
+      {
+        "district": "d06",
+        "feature": "families_with_children_share",
+        "true_level": "low",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.623447418212891,
+          "medium": -7.820154666900635,
+          "high": -7.9935712814331055
+        },
+        "correct": true
+      },
+      {
+        "district": "d07",
+        "feature": "pct_tertiary_education",
+        "true_level": "high",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -8.035598754882812,
+          "medium": -7.654312610626221,
+          "high": -7.699975967407227
+        },
+        "correct": false
+      },
+      {
+        "district": "d01",
+        "feature": "schools_per_10k",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.446991920471191,
+          "medium": -7.701406955718994,
+          "high": -7.484591960906982
+        },
+        "correct": false
+      }
+    ]
+  }
+]

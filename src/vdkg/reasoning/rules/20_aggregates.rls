@@ -1,0 +1,63 @@
+% Record linkage: candidate matches of the same sport form venues (transitive closure),
+% each venue is represented by its record with the smallest id.
+
+matches(?A, ?B, ?Sport) :- poiMatchSrc(?A, ?B, ?Sport).
+sameVenue(?A, ?A, ?Sport) :- offersSport(?A, ?Sport, ?D).
+sameVenue(?A, ?C, ?Sport) :- sameVenue(?A, ?B, ?Sport), matches(?B, ?C, ?Sport).
+representative(?A, ?Sport, #min(?B)) :- sameVenue(?A, ?B, ?Sport).
+sportVenue(?R, ?Sport, ?D) :- representative(?A, ?Sport, ?R), offersSport(?R, ?Sport, ?D).
+sportVenueCount(?D, ?Sport, #count(?R)) :- sportVenue(?R, ?Sport, ?D).
+
+sport("tennis"). sport("football"). sport("basketball").
+sport("volleyball"). sport("fitness"). sport("swimming").
+
+countedClass("nightlife_venue"). countedClass("food_venue"). countedClass("culture_venue").
+countedClass("childcare"). countedClass("school"). countedClass("university").
+countedClass("playground"). countedClass("park").
+
+classCount(?D, ?Class, #count(?P)) :- isA(?P, ?Class), located(?P, ?D), countedClass(?Class).
+hasClassCount(?D, ?Class) :- classCount(?D, ?Class, ?N).
+venues(?D, ?Class, ?N) :- classCount(?D, ?Class, ?N).
+venues(?D, ?Class, 0) :- district(?D), countedClass(?Class), ~hasClassCount(?D, ?Class).
+
+hasSportCount(?D, ?Sport) :- sportVenueCount(?D, ?Sport, ?N).
+sportVenues(?D, ?Sport, ?N) :- sportVenueCount(?D, ?Sport, ?N).
+sportVenues(?D, ?Sport, 0) :- district(?D), sport(?Sport), ~hasSportCount(?D, ?Sport).
+
+parkArea(?D, #sum(?A, ?P)) :- isA(?P, "park"), located(?P, ?D), area(?P, ?A).
+
+areaKm2(?D, ?A) :- value(?D, "area_km2", ?A).
+population(?D, ?N) :- value(?D, "population", ?N).
+residents10k(?D, ?X) :- population(?D, ?N), ?X = ?N / 10000.0.
+
+% Numeric features per district.
+feature(?D, "nightlife_per_km2", ?X) :- venues(?D, "nightlife_venue", ?N), areaKm2(?D, ?A), ?X = ?N / ?A.
+feature(?D, "food_per_km2", ?X) :- venues(?D, "food_venue", ?N), areaKm2(?D, ?A), ?X = ?N / ?A.
+feature(?D, "museums", ?X) :- venues(?D, "culture_venue", ?N), ?X = DOUBLE(?N).
+feature(?D, "universities", ?X) :- venues(?D, "university", ?N), ?X = DOUBLE(?N).
+feature(?D, "kindergartens_per_10k", ?X) :- venues(?D, "childcare", ?N), residents10k(?D, ?R), ?X = ?N / ?R.
+feature(?D, "schools_per_10k", ?X) :- venues(?D, "school", ?N), residents10k(?D, ?R), ?X = ?N / ?R.
+feature(?D, "playgrounds_per_10k", ?X) :- venues(?D, "playground", ?N), residents10k(?D, ?R), ?X = ?N / ?R.
+feature(?D, ?F, ?X) :- sportVenues(?D, ?Sport, ?N), residents10k(?D, ?R), ?F = CONCAT(?Sport, "_per_10k"), ?X = ?N / ?R.
+feature(?D, "park_share", ?X) :- parkArea(?D, ?P), areaKm2(?D, ?A), ?X = ?P / (?A * 1000000.0).
+
+feature(?D, "population_density", ?X) :- value(?D, "population_density", ?X).
+feature(?D, "road_share", ?X) :- value(?D, "road_area_m2", ?R), areaKm2(?D, ?A), ?X = ?R / (?A * 1000000.0).
+feature(?D, "cycle_km_per_km2", ?X) :- value(?D, "cycle_path_km", ?K), areaKm2(?D, ?A), ?X = ?K / ?A.
+feature(?D, "single_household_share", ?X) :- value(?D, "people_single_household", ?S), population(?D, ?N), ?X = ?S / ?N.
+
+familiesWithChildren(?D, ?X) :-
+    value(?D, "families_married_children", ?A), value(?D, "families_cohabiting_children", ?B),
+    value(?D, "families_single_father", ?C), value(?D, "families_single_mother", ?E),
+    ?X = ?A + ?B + ?C + ?E.
+familiesTotal(?D, ?X) :-
+    familiesWithChildren(?D, ?W),
+    value(?D, "families_married_no_children", ?A), value(?D, "families_cohabiting_no_children", ?B),
+    ?X = ?W + ?A + ?B.
+feature(?D, "families_with_children_share", ?X) :- familiesWithChildren(?D, ?W), familiesTotal(?D, ?T), ?X = ?W / ?T.
+
+directFeature("avg_age"). directFeature("net_income"). directFeature("unemployed_per_1000").
+directFeature("pct_tertiary_education"). directFeature("cars_per_1000"). directFeature("gps_per_1000").
+directFeature("specialists_per_1000"). directFeature("pharmacies_per_1000").
+directFeature("overnight_stays_per_1000").
+feature(?D, ?F, ?X) :- directFeature(?F), value(?D, ?F, ?X).

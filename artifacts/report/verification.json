@@ -1,0 +1,16 @@
+{
+  "travel_times": {
+    "compared": 36639,
+    "mismatches": 0,
+    "examples": []
+  },
+  "ranks": {
+    "compared": 713,
+    "mismatches": 0
+  },
+  "sport_venues": {
+    "venues_python": 3003,
+    "venues_rules": 3003,
+    "mismatches": 0
+  }
+}

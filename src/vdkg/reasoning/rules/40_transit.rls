@@ -1,0 +1,30 @@
+% Public transport: hubs, recursive reachability (bounded), travel times.
+% Times in minutes. A journey state is (station, current line); changing lines costs 4 minutes.
+
+departures(?S, #sum(?Trips, ?Next, ?Line)) :- segment(?S, ?Next, ?Line, ?Minutes, ?Trips).
+busiest(?D, #max(?X)) :- stationIn(?S, ?D), departures(?S, ?X).
+hub(?D, ?S) :- stationIn(?S, ?D), departures(?S, ?X), busiest(?D, ?X).
+
+ride(?H, ?S, ?Line, ?T) :- hub(?D, ?H), segment(?H, ?S, ?Line, ?T, ?Trips).
+ride(?H, ?Next, ?Line, ?T) :-
+    ride(?H, ?S, ?Line, ?T1), segment(?S, ?Next, ?Line, ?T2, ?Trips),
+    ?T = ?T1 + ?T2, ?T <= 45.
+ride(?H, ?Next, ?Line, ?T) :-
+    ride(?H, ?S, ?Previous, ?T1), segment(?S, ?Next, ?Line, ?T2, ?Trips), ?Line != ?Previous,
+    ?T = ?T1 + ?T2 + 4, ?T <= 45.
+fastest(?H, ?S, #min(?T)) :- ride(?H, ?S, ?Line, ?T).
+
+travelTime(?D, ?S, ?T) :- hub(?D, ?H), fastest(?H, ?S, ?T), ?S != ?H.
+travelTime(?D, ?H, 0) :- hub(?D, ?H).
+districtTime(?D, ?E, #min(?T)) :- travelTime(?D, ?S, ?T), hub(?E, ?S).
+
+subwayLine(?D, ?Line) :- stationIn(?S, ?D), servedBy(?S, ?Line, "subway").
+subwayLineCount(?D, #count(?Line)) :- subwayLine(?D, ?Line).
+hasSubway(?D) :- subwayLineCount(?D, ?N).
+subwayLines(?D, ?N) :- subwayLineCount(?D, ?N).
+subwayLines(?D, 0) :- district(?D), ~hasSubway(?D).
+stationCount(?D, #count(?S)) :- stationIn(?S, ?D).
+
+feature(?D, "subway_lines", ?X) :- subwayLines(?D, ?N), ?X = DOUBLE(?N).
+feature(?D, "stations_per_km2", ?X) :- stationCount(?D, ?N), areaKm2(?D, ?A), ?X = ?N / ?A.
+feature(?D, "minutes_to_centre", ?X) :- districtTime(?D, "d01", ?T), ?X = DOUBLE(?T).

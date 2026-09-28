@@ -1,0 +1,201 @@
+{
+  "model": "TransE",
+  "entity_vectors": [
+    {
+      "entity": "d07",
+      "first_dims": [
+        -0.073,
+        0.034,
+        0.213,
+        -0.103,
+        -0.037
+      ],
+      "norm": 1.0
+    },
+    {
+      "entity": "d22",
+      "first_dims": [
+        -0.123,
+        0.028,
+        -0.0,
+        0.146,
+        0.163
+      ],
+      "norm": 1.0
+    },
+    {
+      "entity": "nightlife_per_km2:high",
+      "first_dims": [
+        0.061,
+        -0.198,
+        -0.093,
+        -0.04,
+        -0.073
+      ],
+      "norm": 1.0
+    },
+    {
+      "entity": "pref:going_out",
+      "first_dims": [
+        0.037,
+        0.041,
+        -0.136,
+        0.145,
+        -0.098
+      ],
+      "norm": 1.0
+    },
+    {
+      "entity": "line:U3",
+      "first_dims": [
+        -0.089,
+        -0.241,
+        -0.002,
+        -0.242,
+        -0.025
+      ],
+      "norm": 1.0
+    }
+  ],
+  "translation_checks": [
+    {
+      "district": "d07",
+      "feature": "nightlife_per_km2",
+      "distances": {
+        "low": 1.745,
+        "medium": 1.624,
+        "high": 1.487
+      }
+    },
+    {
+      "district": "d22",
+      "feature": "nightlife_per_km2",
+      "distances": {
+        "low": 1.429,
+        "medium": 1.62,
+        "high": 1.783
+      }
+    },
+    {
+      "district": "d13",
+      "feature": "park_share",
+      "distances": {
+        "low": 1.721,
+        "medium": 1.853,
+        "high": 1.846
+      }
+    }
+  ],
+  "suggested_offers": [
+    {
+      "district": "d08",
+      "name": "Josefstadt",
+      "preference": "family",
+      "score": -8.66,
+      "rule_signals_met": 1
+    },
+    {
+      "district": "d23",
+      "name": "Liesing",
+      "preference": "sport_swimming",
+      "score": -9.175,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d08",
+      "name": "Josefstadt",
+      "preference": "green_quiet",
+      "score": -9.216,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d23",
+      "name": "Liesing",
+      "preference": "culture",
+      "score": -9.354,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d08",
+      "name": "Josefstadt",
+      "preference": "sport_tennis",
+      "score": -9.41,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d03",
+      "name": "Landstraße",
+      "preference": "going_out",
+      "score": -9.593,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d08",
+      "name": "Josefstadt",
+      "preference": "sport_basketball",
+      "score": -9.827,
+      "rule_signals_met": 0
+    },
+    {
+      "district": "d02",
+      "name": "Leopoldstadt",
+      "preference": "food",
+      "score": -9.931,
+      "rule_signals_met": 0
+    }
+  ],
+  "completion": {
+    "TransE": {
+      "true_positive": {
+        "district": "d08",
+        "feature": "pct_tertiary_education",
+        "true_level": "high",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.925180435180664,
+          "medium": -10.538286209106445,
+          "high": -9.91653060913086
+        },
+        "correct": true
+      },
+      "false_positive": {
+        "district": "d17",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "high",
+        "scores": {
+          "low": -10.603902816772461,
+          "medium": -11.621140480041504,
+          "high": -10.562215805053711
+        },
+        "correct": false
+      }
+    },
+    "RotatE": {
+      "true_positive": {
+        "district": "d17",
+        "feature": "overnight_stays_per_1000",
+        "true_level": "medium",
+        "predicted_level": "medium",
+        "scores": {
+          "low": -7.313146591186523,
+          "medium": -7.162550926208496,
+          "high": -7.312046051025391
+        },
+        "correct": true
+      },
+      "false_positive": {
+        "district": "d05",
+        "feature": "food_per_km2",
+        "true_level": "high",
+        "predicted_level": "low",
+        "scores": {
+          "low": -7.648808002471924,
+          "medium": -7.785980701446533,
+          "high": -7.683858394622803
+        },
+        "correct": false
+      }
+    }
+  }
+}

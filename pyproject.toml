@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vdkg"
+version = "0.1.0"
+description = "Knowledge Graph-based Vienna district similarity and lifestyle recommendation"
+authors = [{ name = "Moritz Lindner" }]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "requests>=2.31",
+    "shapely>=2.0",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+ml = ["pykeen>=1.10", "scipy>=1.11", "matplotlib>=3.8", "rdflib>=7.0"]
+dev = ["pytest>=8", "ruff>=0.4", "httpx2"]
+
+[project.scripts]
+vdkg = "vdkg.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vdkg = ["reasoning/rules/*.rls"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

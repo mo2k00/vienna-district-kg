@@ -1,0 +1,16 @@
+{
+  "file": "data/kg/vienna_kg.trig",
+  "ground_triples": 102979,
+  "derived_triples": 6602,
+  "sparql_example": "PREFIX vkg: <http://example.org/vienna-kg/>\nSELECT ?name ?minutes WHERE {\n  GRAPH <http://example.org/vienna-kg/graph/derived> {\n    ?district vkg:offers <http://example.org/vienna-kg/pref/going_out> .\n    ?journey vkg:from ?district ;\n             vkg:to <http://example.org/vienna-kg/district/d01> ;\n             vkg:minutes ?minutes .\n  }\n  GRAPH <http://example.org/vienna-kg/graph/ground> { ?district vkg:name ?name . }\n  FILTER (?minutes <= 10)\n}\nORDER BY ?minutes",
+  "sparql_result": [
+    [
+      "Innere Stadt",
+      0
+    ],
+    [
+      "Neubau",
+      4
+    ]
+  ]
+}

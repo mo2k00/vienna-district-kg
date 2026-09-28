@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vienna District Finder</title>
+    <meta name="description" content="Knowledge graph-based district similarity and lifestyle recommendation for Vienna" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="#/recommend">Vienna District Finder<small>Knowledge Graph</small></a>
+        <nav class="nav" aria-label="Main">
+          <a href="#/recommend" data-view="recommend">Recommend</a>
+          <a href="#/similar" data-view="similar">Similar districts</a>
+          <a href="#/district/d01" data-view="district">Districts</a>
+          <a href="#/about" data-view="about">About the KG</a>
+        </nav>
+      </div>
+    </header>
+    <main id="view" aria-live="polite"></main>
+    <footer class="site-footer">
+      Data: Stadt Wien – data.wien.gv.at (CC BY 4.0) · Wiener Linien (CC BY 4.0) · © OpenStreetMap contributors (ODbL) · Basemap: basemap.at
+    </footer>
+  </body>
+</html>

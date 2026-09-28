@@ -1,0 +1,11 @@
+tools/nemo/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+data/raw/
+artifacts/embeddings/runs/
+.pytest_cache/
+.ruff_cache/
+dist/
+.idea/

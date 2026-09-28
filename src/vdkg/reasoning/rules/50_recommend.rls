@@ -1,0 +1,45 @@
+% Per-request reasoning over the materialised KG.
+% Request facts: request(R), prefers(R, Preference, Weight 1..3),
+%                nearbyLimit(R, Minutes), commute(R, Station, MaxMinutes).
+
+@import districtName :- csv{resource="districtName.csv", format=(any,any)}.
+@import offers :- csv{resource="offers.csv", format=(any,any)}.
+@import districtTime :- csv{resource="districtTime.csv", format=(any,any,any)}.
+@import travelTime :- csv{resource="travelTime.csv", format=(any,any,any)}.
+
+district(?D) :- districtName(?D, ?Name).
+
+% Hard constraint: the daily commute must be feasible.
+hasCommute(?R) :- commute(?R, ?S, ?Max).
+commuteOk(?R, ?D, ?T) :- commute(?R, ?S, ?Max), travelTime(?D, ?S, ?T), ?T <= ?Max.
+commuteFeasible(?R, ?D) :- commuteOk(?R, ?D, ?T).
+excluded(?R, ?D) :- hasCommute(?R), district(?D), ~commuteFeasible(?R, ?D).
+candidate(?R, ?D) :- request(?R), district(?D), ~excluded(?R, ?D).
+
+% Object creation: one recommendation node per candidate district.
+recommendation(!Rec, ?R, ?D) :- candidate(?R, ?D).
+
+satisfiedIn(?Rec, ?P) :- recommendation(?Rec, ?R, ?D), prefers(?R, ?P, ?W), offers(?D, ?P).
+nearbyOption(?Rec, ?P, ?E, ?T) :-
+    recommendation(?Rec, ?R, ?D), prefers(?R, ?P, ?W), ~offers(?D, ?P),
+    nearbyLimit(?R, ?Limit), districtTime(?D, ?E, ?T), ?T <= ?Limit, offers(?E, ?P).
+nearestOption(?Rec, ?P, #min(?T)) :- nearbyOption(?Rec, ?P, ?E, ?T).
+satisfiedNearby(?Rec, ?P, ?E, ?T) :- nearbyOption(?Rec, ?P, ?E, ?T), nearestOption(?Rec, ?P, ?T).
+
+% Full credit (2W) inside the district; nearby credit decays linearly from 2W to W at the limit.
+contribution(?Rec, ?P, ?V) :- satisfiedIn(?Rec, ?P), recommendation(?Rec, ?R, ?D), prefers(?R, ?P, ?W), ?V = 2.0 * ?W.
+contribution(?Rec, ?P, ?V) :-
+    satisfiedNearby(?Rec, ?P, ?E, ?T), recommendation(?Rec, ?R, ?D), prefers(?R, ?P, ?W),
+    nearbyLimit(?R, ?Limit), ?V = ?W * (2.0 - DOUBLE(?T) / DOUBLE(?Limit)).
+score(?Rec, #sum(?V, ?P)) :- contribution(?Rec, ?P, ?V).
+weightOf(?R, ?P, ?W) :- prefers(?R, ?P, ?W).
+maxScore(?R, #sum(?V, ?P)) :- weightOf(?R, ?P, ?W), ?V = 2.0 * ?W.
+commuteTime(?Rec, ?T) :- recommendation(?Rec, ?R, ?D), commuteOk(?R, ?D, ?T).
+
+@export recommendation :- csv{}.
+@export satisfiedIn :- csv{}.
+@export satisfiedNearby :- csv{}.
+@export score :- csv{}.
+@export maxScore :- csv{}.
+@export commuteTime :- csv{}.
+@export excluded :- csv{}.

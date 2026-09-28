@@ -1,0 +1,14 @@
+% Learned knowledge as a soft preference: districts the embedding model finds similar to one
+% the user likes. Request fact: likes(R, District, Weight 1..3).
+
+@import similarRank :- csv{resource="similarRank.csv", format=(any,any,any)}.
+
+weightOf(?R, "similar_to_liked", ?W) :- likes(?R, ?L, ?W).
+similarToLiked(?Rec, ?K) :- recommendation(?Rec, ?R, ?D), likes(?R, ?L, ?W), similarRank(?L, ?D, ?K).
+contribution(?Rec, "similar_to_liked", ?V) :- recommendation(?Rec, ?R, ?D), likes(?R, ?D, ?W), ?V = 2.0 * ?W.
+contribution(?Rec, "similar_to_liked", ?V) :-
+    similarToLiked(?Rec, ?K), ?K <= 3, recommendation(?Rec, ?R, ?D), likes(?R, ?L, ?W), ?V = 2.0 * ?W.
+contribution(?Rec, "similar_to_liked", ?V) :-
+    similarToLiked(?Rec, ?K), ?K > 3, ?K <= 6, recommendation(?Rec, ?R, ?D), likes(?R, ?L, ?W), ?V = 1.0 * ?W.
+
+@export similarToLiked :- csv{}.

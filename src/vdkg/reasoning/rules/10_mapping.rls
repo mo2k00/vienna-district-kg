@@ -1,0 +1,64 @@
+% Schema mapping: source relations -> KG vocabulary.
+
+@import districtSrc :- csv{resource="district.csv", format=(string,string,int)}.
+@import observationSrc :- csv{resource="observation.csv", format=(string,string,double,int,string)}.
+@import adjacentSrc :- csv{resource="adjacent.csv", format=(string,string)}.
+@import poiSrc :- csv{resource="poi.csv", format=(string,string,string,string)}.
+@import poiIdSrc :- csv{resource="poi_id.csv", format=(string,int)}.
+@import poiAreaSrc :- csv{resource="poi_area.csv", format=(string,double)}.
+@import poiSportSrc :- csv{resource="poi_sport.csv", format=(int,string,string)}.
+@import poiMatchSrc :- csv{resource="poi_match.csv", format=(int,int,string)}.
+@import poiDeclaredSrc :- csv{resource="poi_declared.csv", format=(string,string)}.
+@import stationSrc :- csv{resource="station.csv", format=(string,string,string)}.
+@import segmentSrc :- csv{resource="segment.csv", format=(string,string,string,int,int)}.
+@import stationLineSrc :- csv{resource="station_line.csv", format=(string,string,string)}.
+
+district(?D) :- districtSrc(?D, ?Name, ?Number).
+districtName(?D, ?Name) :- districtSrc(?D, ?Name, ?Number).
+adjacent(?A, ?B) :- adjacentSrc(?A, ?B).
+value(?D, ?Indicator, ?V) :- observationSrc(?D, ?Indicator, ?V, ?Year, ?Source).
+observedIn(?D, ?Indicator, ?Year, ?Source) :- observationSrc(?D, ?Indicator, ?V, ?Year, ?Source).
+
+located(?P, ?D) :- poiSrc(?P, ?Category, ?D, ?Source).
+isA(?P, ?Category) :- poiSrc(?P, ?Category, ?D, ?Source).
+poiId(?P, ?I) :- poiIdSrc(?P, ?I).
+area(?P, ?A) :- poiAreaSrc(?P, ?A).
+offersSport(?I, ?Sport, ?D) :- poiSportSrc(?I, ?Sport, ?D).
+
+% Venue taxonomy; membership propagates along the (transitive) hierarchy.
+subClassOf("bar", "nightlife_venue").
+subClassOf("pub", "nightlife_venue").
+subClassOf("nightclub", "nightlife_venue").
+subClassOf("biergarten", "nightlife_venue").
+subClassOf("restaurant", "food_venue").
+subClassOf("cafe", "food_venue").
+subClassOf("market", "food_venue").
+subClassOf("museum", "culture_venue").
+subClassOf("park", "green_space").
+subClassOf("kindergarten", "childcare").
+subClassOf("school", "education").
+subClassOf("university", "education").
+subClassOf("childcare", "family_facility").
+subClassOf("playground", "family_facility").
+subClassOf("pitch", "sport_venue").
+subClassOf("sports_centre", "sport_venue").
+subClassOf("fitness_centre", "sport_venue").
+subClassOf("fitness_station", "sport_venue").
+subClassOf("swimming_venue", "sport_venue").
+subClassOf("sport_facility", "sport_venue").
+subClassOf("nightlife_venue", "leisure_venue").
+subClassOf("food_venue", "leisure_venue").
+subClassOf("culture_venue", "leisure_venue").
+subClassOf("sport_venue", "leisure_venue").
+
+subClassOfT(?A, ?B) :- subClassOf(?A, ?B).
+subClassOfT(?A, ?C) :- subClassOfT(?A, ?B), subClassOf(?B, ?C).
+isA(?P, ?Super) :- isA(?P, ?Class), subClassOfT(?Class, ?Super).
+
+% Cleaning: records whose stated district contradicts their coordinates.
+locationConflict(?P, ?Stated, ?Actual) :- poiDeclaredSrc(?P, ?Stated), located(?P, ?Actual), ?Stated != ?Actual.
+
+stationIn(?S, ?D) :- stationSrc(?S, ?Name, ?D).
+stationName(?S, ?Name) :- stationSrc(?S, ?Name, ?D).
+segment(?A, ?B, ?Line, ?Minutes, ?Trips) :- segmentSrc(?A, ?B, ?Line, ?Minutes, ?Trips).
+servedBy(?S, ?Line, ?Mode) :- stationLineSrc(?S, ?Line, ?Mode).
