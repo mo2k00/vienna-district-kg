@@ -30,7 +30,7 @@ def architecture(path: Path) -> None:
     boxes = [
         (0.2, 2.8, "Open data\nCity of Vienna\nWiener Linien · OSM", SOFT),
         (2.25, 2.8, "Ingest (Python)\nparsing · district lookup\nlinkage candidates", SOFT),
-        (4.3, 2.8, "Ground facts D\n~38k facts\n12 relations", SOFT),
+        (4.3, 2.8, "Ground facts D\n63k facts\n12 relations", SOFT),
         (7.15, 2.8, "Materialised KG r(D)\n1.9M derived facts\nlevels · offers · times", SOFT),
         (10.05, 2.8, "Service\nper-request rules\n(existential)\nFastAPI + web app", SOFT),
         (5.72, 0.55, "Rules K (Nemo)\nmapping · aggregation\nlevels · transit recursion", LOGIC),

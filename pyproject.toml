@@ -20,6 +20,7 @@ dependencies = [
 [project.optional-dependencies]
 ml = ["pykeen>=1.10", "scipy>=1.11", "matplotlib>=3.8", "rdflib>=7.0"]
 dev = ["pytest>=8", "ruff>=0.4", "httpx2"]
+portfolio = ["python-docx>=1.1", "pymupdf>=1.24", "pillow>=10"]
 
 [project.scripts]
 vdkg = "vdkg.cli:main"

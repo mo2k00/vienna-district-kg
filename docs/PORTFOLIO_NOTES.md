@@ -11,7 +11,7 @@ Running collection of facts, examples and numbers for the final report. Tag each
   2021–2025), 8 City of Vienna WFS point layers, OpenStreetMap snapshot 2026-09-26 (8,556 elements),
   Wiener Linien GTFS (1,757 stations in Vienna, 7,545 line segments), district polygons (56 adjacent pairs).
 - Ingest run: ~60–70 s (GTFS stop_times 717 MB streamed in 2M-row chunks).
-- Ground KG: ~38k facts in 12 relations (`data/kg/*.csv`); observations are reified with year + source.
+- Ground KG: 63,150 facts in 12 relations (`data/kg/*.csv`); observations are reified with year + source.
 - District resolution by point-in-polygon for all POIs; stated district (address prefix / BEZIRK / PLZ)
   kept for validation.
 - **Schema mapping as rules** (`10_mapping.rls`): source relations → KG predicates; venue taxonomy

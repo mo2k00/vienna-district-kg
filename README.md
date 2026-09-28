@@ -65,7 +65,14 @@ Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot 
 vdkg report                               # artifacts/report/: verification.json, traces.md, examples.json, rdf_export.json, figures/
 python tools/screenshots.py               # needs a running `vdkg serve` and Chrome → artifacts/report/screenshots/
 python tools/package_submission.py        # → dist/vienna-district-kg-submission.zip
+python tools/build_portfolio.py           # → dist/portfolio/KG_Portfolio_Lindner-structured.{docx,pdf}
 ```
+
+The portfolio is written in `docs/portfolio/report.md` (Markdown) with the cover-page entries in
+`docs/portfolio/cover.json`. `build_portfolio.py` fills the course pro-forma, appends the report,
+fills in the page references on the cover pages and exports the PDF through Microsoft Word
+(`pip install -e ".[portfolio]"`, Windows with Word required). Highlighted fields on the cover pages
+(hours, AI percentages, declaration) are placeholders to fill in `cover.json`.
 
 - `verification.json` checks reasoning results against independent Python implementations
   (Dijkstra for travel times, union-find for record linkage, ranks).

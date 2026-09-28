@@ -9,8 +9,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 CHROME = os.environ.get("CHROME", r"C:\Program Files\Google\Chrome\Application\chrome.exe")
 OUTPUT = Path(__file__).resolve().parents[1] / "artifacts" / "report" / "screenshots"
+
+CROPS = {"recommend": (60, 195, 1380, 1030)}
 
 PAGES = {
     "recommend": (
@@ -43,6 +47,9 @@ def main() -> None:
             check=True,
             capture_output=True,
         )
+        if name in CROPS:
+            with Image.open(target) as image:
+                image.crop(CROPS[name]).save(OUTPUT / f"{name}_crop.png")
         print(f"{name}: {target}")
 
 
