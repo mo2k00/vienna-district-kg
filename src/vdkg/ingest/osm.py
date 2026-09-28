@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, datetime
 
 import pandas as pd
 import requests
@@ -80,4 +80,10 @@ def load_osm() -> tuple[pd.DataFrame, pd.DataFrame, str]:
             }
         )
         sport_rows.extend({"key": key, "sport": sport} for sport in _sports(tags))
-    return pd.DataFrame(rows), pd.DataFrame(sport_rows), payload["snapshot_date"]
+    snapshot_date = payload.get("snapshot_date") or _file_date()
+    return pd.DataFrame(rows), pd.DataFrame(sport_rows), snapshot_date
+
+
+def _file_date() -> str:
+    """Date of a manually saved Overpass response that lacks our `snapshot_date` field."""
+    return datetime.fromtimestamp(SNAPSHOT.stat().st_mtime).date().isoformat()

@@ -76,6 +76,53 @@ python tools/package_submission.py        # → dist/vienna-district-kg-submissi
 - Result pages are shareable: after a search the URL contains all preferences
   (e.g. `#/recommend/going_out=3&sport_tennis=2&nearby=10`); opening it re-runs the search.
 
+## Data files: sources, names and locations
+
+`vdkg ingest` downloads everything automatically and caches it under the names below. To download a
+file **manually** (e.g. when a portal is slow or you want a specific version), save it under exactly
+this name and location — the loader then uses the local file instead of downloading. Keep the files
+as published: do not rename columns, change separators or re-encode them.
+
+| Dataset | Download from | Save as |
+|---|---|---|
+| District statistics – density | https://www.wien.gv.at/gogv/l9ogdviebezbizpopden2002f | `data/raw/ma23_density.csv` |
+| District statistics – age | https://www.wien.gv.at/gogv/l9ogdviebezbizpopage2002f | `data/raw/ma23_age.csv` |
+| District statistics – income | https://www.wien.gv.at/gogv/l9ogdviebezbizecnincsex2002f | `data/raw/ma23_income.csv` |
+| District statistics – unemployment | https://www.wien.gv.at/gogv/l9ogdviebezbizempsexuep2002f | `data/raw/ma23_unemployment.csv` |
+| District statistics – education | https://www.wien.gv.at/gogv/l9ogdviebezbizeduatt2008f | `data/raw/ma23_education.csv` |
+| District statistics – households | https://www.wien.gv.at/gogv/l9ogdviebezpopsexhhtyp2012f | `data/raw/ma23_households.csv` |
+| District statistics – families | https://www.wien.gv.at/gogv/l9ogdviebezfamtyp2012f | `data/raw/ma23_families.csv` |
+| District statistics – traffic_area | https://www.wien.gv.at/gogv/l9ogdviebezbiztectra2002f | `data/raw/ma23_traffic_area.csv` |
+| District statistics – medical | https://www.wien.gv.at/gogv/l9ogdviebezbizmedsup2002f | `data/raw/ma23_medical.csv` |
+| District statistics – tourism | https://www.wien.gv.at/gogv/l9ogdviebezbizecntou2002f | `data/raw/ma23_tourism.csv` |
+| Cars per 1,000 residents (MA 20) | https://www.wien.gv.at/data/ogd/ma20/pkwdichte2024.csv | `data/raw/ma20_car_density.csv` |
+| Map layer – parks (`PARKINFOOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:PARKINFOOGD&outputFormat=csv) | `data/raw/wfs_parks.csv` |
+| Map layer – schools (`SCHULEOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:SCHULEOGD&outputFormat=csv) | `data/raw/wfs_schools.csv` |
+| Map layer – kindergartens (`KINDERGARTENOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:KINDERGARTENOGD&outputFormat=csv) | `data/raw/wfs_kindergartens.csv` |
+| Map layer – universities (`UNIVERSITAETOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:UNIVERSITAETOGD&outputFormat=csv) | `data/raw/wfs_universities.csv` |
+| Map layer – markets (`MAERKTEOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:MAERKTEOGD&outputFormat=csv) | `data/raw/wfs_markets.csv` |
+| Map layer – museums (`MUSEUMOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:MUSEUMOGD&outputFormat=csv) | `data/raw/wfs_museums.csv` |
+| Map layer – sport_facilities (`SPORTSTAETTENOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:SPORTSTAETTENOGD&outputFormat=csv) | `data/raw/wfs_sport_facilities.csv` |
+| Map layer – playgrounds (`SPIELPLATZPUNKTOGD`) | [WFS CSV](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:SPIELPLATZPUNKTOGD&outputFormat=csv) | `data/raw/wfs_playgrounds.csv` |
+| District boundaries (`BEZIRKSGRENZEOGD`) | [WFS GeoJSON](https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&typeName=ogdwien:BEZIRKSGRENZEOGD&outputFormat=json) | `data/raw/district_borders.geojson` |
+| Wiener Linien timetables (GTFS) | http://www.wienerlinien.at/ogd_realtime/doku/ogd/gtfs/gtfs.zip | unzip into `data/raw/gtfs/` (see below) |
+| OpenStreetMap venues | Overpass API https://overpass-api.de/api/interpreter, query in `src/vdkg/ingest/osm.py` (`QUERY`) | `data/snapshots/osm_pois.json` |
+
+Notes:
+
+- **District statistics** (MA 23) are `;`-separated CSVs with a title line above the header; the
+  loader picks the latest year in which all 23 districts have values.
+- **Map layers** are the City of Vienna WFS; the links above return CSV (or GeoJSON for the
+  boundaries) in WGS84 (`EPSG:4326`). The catalogue pages are listed in `docs/DATA_SOURCES.md`.
+- **GTFS**: only `stops.txt`, `stop_times.txt`, `trips.txt` and `routes.txt` are needed. Either extract
+  them into `data/raw/gtfs/` or point `VDKG_GTFS_DIR` to a folder that already contains them (e.g. the
+  course template's `src/assets/data/wienerlinien`). `stop_times.txt` is ~700 MB unpacked.
+- **OpenStreetMap**: POST the `QUERY` from `src/vdkg/ingest/osm.py` to the Overpass API
+  (e.g. on https://overpass-turbo.eu, export as raw JSON) and save the response as
+  `data/snapshots/osm_pois.json`. The snapshot date is read from a `snapshot_date` field if present,
+  otherwise from the file's modification date. This file is committed so results stay reproducible.
+- After adding or replacing any file, run `vdkg all` (or the steps from `vdkg ingest` on).
+
 ## Updating or exchanging data
 
 | I want to … | Do this | Then run |
