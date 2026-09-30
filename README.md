@@ -1,7 +1,7 @@
 # Vienna District KG
 
 Knowledge Graph-based district similarity and lifestyle recommendation for Vienna.
-Mini-project for *Knowledge Graphs* (TU Wien, 2026S) — Moritz Lindner.
+Mini-project for *Knowledge Graphs* (TU Wien, 2026S) by Moritz Lindner.
 
 A knowledge graph over Vienna's 23 districts built from open data (City of Vienna, Wiener Linien,
 OpenStreetMap). A **logic layer** (Nemo, Datalog with existential rules) derives what districts
@@ -15,7 +15,11 @@ on macOS/Linux use `.venv/bin/...` instead of `.venv\Scripts\...`. After activat
 environment (`.venv\Scripts\activate`), the prefix can be dropped and `vdkg ...` works directly.
 
 The project already contains all results: processed data, the knowledge graph, the reasoning results
-and the trained embeddings. **To try the web app, Option A is all you need.** Option B is only needed
+and the trained embeddings.
+
+**To try the web app, Option A is all you need.**
+
+Option B is only needed
 to recompute the results (training, pipeline) or to run the tests.
 
 | I want to … | Setup |
@@ -25,7 +29,7 @@ to recompute the results (training, pipeline) or to run the tests.
 | retrain the embeddings (`vdkg embed`, `vdkg all`) or regenerate the report evidence (`vdkg report`) | Option A + B |
 | run the tests / linter | Option A + B |
 
-### Option A — run the web app (no training, no GPU, a few minutes)
+### Option A: run the web app (no training, no GPU, a few minutes)
 
 Run once:
 
@@ -39,7 +43,7 @@ python -m venv .venv
 python tools/setup_nemo.py
 ```
 
-- `pip install -e .` installs only the packages the app needs (FastAPI, pandas, …) — no PyTorch/PyKEEN.
+- `pip install -e .` installs only the packages the app needs (FastAPI, pandas, …), without PyTorch/PyKEEN.
 - `tools/setup_nemo.py` downloads the Nemo rule engine (v0.10.1) for your platform into `tools/nemo/`
   and verifies its checksum. It is needed because the Recommend page runs the rules for every
   search. If `tools/nemo/` already exists (e.g. in a copy of the project that includes it), skip it.
@@ -55,7 +59,7 @@ Then open **http://127.0.0.1:8000** in a browser. Stop the server with `Ctrl+C`.
 - Other port: `.venv\Scripts\vdkg serve --port 8080`; reachable from other devices in the network: `.venv\Scripts\vdkg serve --host 0.0.0.0`.
 - Interactive API documentation (Swagger UI): **http://127.0.0.1:8000/docs**.
 
-### Option B — full setup: training, report evidence, tests
+### Option B: full setup (training, report evidence, tests)
 
 Only needed to recompute results. Run once, after Option A, in the same virtual environment:
 
@@ -82,7 +86,7 @@ Result pages are shareable: after a search the URL contains all preferences
 
 ## Pipeline
 
-Not needed to use the web app — all outputs are already included. Each step reads the output of the
+Not needed to use the web app, since all outputs are already included. Each step reads the output of the
 previous one; the last column shows the setup it requires:
 
 | Command | Does | Output | Time | Setup |
@@ -95,7 +99,7 @@ previous one; the last column shows the setup it requires:
 | `.venv\Scripts\vdkg report` | evidence for the report: verification, derivation traces, RDF export + SPARQL, embedding examples, figures | `artifacts/report/`, `data/kg/vienna_kg.trig` | ~20 s | A + B |
 | `.venv\Scripts\vdkg serve` | web app + API | | | A |
 
-Restart `.venv\Scripts\vdkg serve` after rerunning a step — the server caches the KG in memory.
+Restart `.venv\Scripts\vdkg serve` after rerunning a step, because the server caches the KG in memory.
 
 Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot in
 `data/snapshots/osm_pois.json` is committed so results are reproducible.
@@ -114,7 +118,7 @@ Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot 
 ```
 downloads everything automatically and caches it under the names below. To download a
 file **manually** (e.g. when a portal is slow or you want a specific version), save it under exactly
-this name and location — the loader then uses the local file instead of downloading. Keep the files
+this name and location; the loader then uses the local file instead of downloading. Keep the files
 as published: do not rename columns, change separators or re-encode them.
 
 | Dataset | Download from | Save as |
@@ -165,13 +169,13 @@ Notes:
 | refresh only OpenStreetMap | delete `data/snapshots/osm_pois.json` | `.venv\Scripts\vdkg all` |
 | refresh one city dataset | delete its file in `data/raw/` (`ma23_<key>.csv`, `wfs_<key>.csv`, `ma20_car_density.csv`, `district_borders.geojson`) | `.venv\Scripts\vdkg all` |
 | use an already downloaded GTFS feed | set `VDKG_GTFS_DIR` to the folder with `stops.txt`, `stop_times.txt`, `trips.txt`, `routes.txt` (e.g. the course template's `src/assets/data/wienerlinien`) | `.venv\Scripts\vdkg all` |
-| get a fresh GTFS feed | delete `data/raw/gtfs/` and `data/raw/gtfs.zip` (and unset `VDKG_GTFS_DIR`) — downloaded automatically (large, stop_times.txt alone is ~700 MB unpacked) | `.venv\Scripts\vdkg all` |
+| get a fresh GTFS feed | delete `data/raw/gtfs/` and `data/raw/gtfs.zip` (and unset `VDKG_GTFS_DIR`); it is downloaded automatically (large, stop_times.txt alone is ~700 MB unpacked) | `.venv\Scripts\vdkg all` |
 | add another MA 23 district statistics series | add a `StatisticsSeries` to `STATISTICS` in `src/vdkg/ingest/sources.py` (URL + column → indicator name); to use it as a feature add `directFeature("<indicator>").` in `20_aggregates.rls` and a label in `FEATURE_LABELS` (`service/catalogue.py`) | `.venv\Scripts\vdkg all` |
 | add another City of Vienna point layer | add a `PointLayer` to `POINT_LAYERS` in `sources.py`; map its category in the `subClassOf` / `countedClass` facts of `10_mapping.rls` / `20_aggregates.rls` | `.venv\Scripts\vdkg all` |
 | change what a preference means | edit its `signal(...)` / `required(...)` facts in `30_traits.rls` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
 | add a new preference | add `signal`/`required` facts in `30_traits.rls` and a `Preference` in `service/catalogue.py` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
 | change level thresholds (thirds) | the `level(...)` rules at the top of `30_traits.rls` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
-| change transfer penalty / max travel time | `+ 4` and `<= 45` in `40_transit.rls` (keep the limit ≤ 45 — see below) | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
+| change transfer penalty / max travel time | `+ 4` and `<= 45` in `40_transit.rls` (keep the limit ≤ 45, see Troubleshooting) | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
 | change scoring of recommendations | `contribution(...)` rules in `50_recommend.rls` / `55_similarity.rls` | restart `.venv\Scripts\vdkg serve` |
 | change embedding models / hyperparameters | `MODELS`, `SEEDS`, `TrainingConfig` in `src/vdkg/embeddings/train.py` | `.venv\Scripts\vdkg embed` |
 

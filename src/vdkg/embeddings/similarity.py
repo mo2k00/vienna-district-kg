@@ -8,7 +8,7 @@ def cosine_matrix(vectors: np.ndarray) -> np.ndarray:
 
 
 def feature_baseline(features: dict[str, dict[str, float]], districts: list[str]) -> np.ndarray:
-    """Cosine similarity of standardised raw feature vectors — the non-graph baseline."""
+    """Cosine similarity of standardised raw feature vectors (the non-graph baseline)."""
     table = pd.DataFrame(features).T.loc[districts]
     standardised = (table - table.mean()) / table.std(ddof=0).replace(0, 1)
     return cosine_matrix(standardised.to_numpy())

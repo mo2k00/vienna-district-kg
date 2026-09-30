@@ -3,8 +3,8 @@ import { districtTitle, el, levelBadge, loading, notice } from "../dom.js";
 import { DistrictMap } from "../map.js";
 
 const SOURCES = {
-  TransE: "TransE embedding — relations as translations (h + r ≈ t), as in the lecture.",
-  RotatE: "RotatE embedding — relations as rotations in complex space.",
+  TransE: "TransE embedding: relations as translations (h + r ≈ t), as in the lecture.",
+  RotatE: "RotatE embedding: relations as rotations in complex space.",
   features: "Baseline without the graph: cosine similarity of the raw district statistics.",
 };
 
@@ -46,7 +46,7 @@ export async function render(root, { meta, navigate, params }) {
       el(
         "p",
         {},
-        "Knowledge graph embeddings place every district in a vector space learned from the graph — its levels, what it offers, its neighbours and transit links. Districts close in that space are similar.",
+        "Knowledge graph embeddings place every district in a vector space learned from the graph: its levels, what it offers, its neighbours and transit links. Districts close in that space are similar.",
       ),
     ),
     el(

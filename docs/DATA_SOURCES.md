@@ -1,88 +1,91 @@
-# Data sources (scouted 2026-09-26)
+# Data sources
 
-All City of Vienna data: licence **CC BY 4.0**, attribution "Datenquelle: Stadt Wien – data.wien.gv.at".
-Wiener Linien data: **CC BY 4.0**, "Datenquelle: Wiener Linien – data.wien.gv.at".
-Catalogue search API used: `https://www.data.gv.at/api/hub/search/search?q=...&filter=dataset`,
-dataset metadata: `https://www.data.gv.at/api/hub/search/datasets/<id>`.
+All data is open data. `vdkg ingest` downloads every source and caches it in `data/raw/` (file names
+and manual download instructions are in the README). The OpenStreetMap snapshot is stored in
+`data/snapshots/osm_pois.json` so that results are reproducible.
 
-## A. MA 23 district statistics ("… seit 20xx – Bezirke Wien")
-Uniform CSV: line 1 = title, line 2 = header `NUTS;DISTRICT_CODE;SUB_DISTRICT_CODE;REF_YEAR;REF_DATE;…`,
-`;`-separated, German number format (`1.234,56`). DISTRICT_CODE `9xx00` = district xx, `90000` = Vienna total.
+| Provider | Licence | Attribution |
+|---|---|---|
+| City of Vienna (data.wien.gv.at) | CC BY 4.0 | Datenquelle: Stadt Wien – data.wien.gv.at |
+| Wiener Linien (data.wien.gv.at) | CC BY 4.0 | Datenquelle: Wiener Linien – data.wien.gv.at |
+| OpenStreetMap | ODbL | © OpenStreetMap contributors |
+| basemap.at (map tiles in the web app) | CC BY 4.0 | Basemap: basemap.at |
 
-| Key | Dataset | Main indicators | Latest year | CSV |
-|---|---|---|---|---|
-| income_net | Durchschnittliches Nettoeinkommen seit 2002 | avg. annual net income per employee (total/m/f) | 2021 | https://www.wien.gv.at/gogv/l9ogdviebezbizecnincsex2002f |
-| density | Bevölkerungsdichte seit 2002 | population, area km², inhabitants/km² | 2025 | https://www.wien.gv.at/gogv/l9ogdviebezbizpopden2002f |
-| avg_age | Durchschnittsalter seit 2002 | average age | 2025 | https://www.wien.gv.at/gogv/l9ogdviebezbizpopage2002f |
-| unemployed | Arbeitslose Personen seit 2002 | unemployed 15–64 per 1,000 inhabitants | 2023 | https://www.wien.gv.at/gogv/l9ogdviebezbizempsexuep2002f |
-| education | Bildungsstand seit 2008 | % by highest education (incl. university) | 2023 | https://www.wien.gv.at/gogv/l9ogdviebezbizeduatt2008f |
-| household_type | Bevölkerung nach Typ des Haushalts seit 2012 | single-person, couples, with kids, … | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezpopsexhhtyp2012f |
-| traffic_area | Verkehrsflächen seit 2002 | road / pedestrian / cycle area per 1,000 inh. | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbiztectra2002f |
-| medical | Medizinische Versorgung seit 2002 | doctors, dentists, pharmacies per 1,000 inh. | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbizmedsup2002f |
-| tourism | Gästeübernachtungen seit 2002 | overnight stays per 1,000 inh. | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbizecntou2002f |
+## 1. District statistics (City of Vienna, MA 23)
 
-Further MA 23 series available (not downloaded): nationality, birth country, household size,
-family type, births/deaths, migration flows, commuters, dogs, cars by brand/kW, eligible voters,
-population forecast 2023–2043.
+One CSV per series: `;`-separated, a title line above the header, German number format
+(`1.234,56`), districts coded as `9xx00`. The loader uses the latest year in which all 23 districts
+have a value.
 
-## B. Other district tables (MA 18 / MA 20)
-| Key | Dataset | Indicators | Year | CSV |
-|---|---|---|---|---|
-| car_density | PKW-Dichte der Bezirke Wien | cars per 1,000 inhabitants | 2024 | https://www.wien.gv.at/data/ogd/ma20/pkwdichte2024.csv |
-| bike_infra | Radinfrastruktur nach Bezirken | cycle path length / area share | 2023 | https://go.gv.at/l9ogdverkehrsflaechenbezirke2023 |
-
-## C. Point / polygon data (WFS, EPSG:4326, CSV) — aggregate per district
-WFS base: `https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&outputFormat=csv&typeName=ogdwien:<TYPE>`
-
-| Key | TYPE | Rows | District link |
+| Series | Indicators used | Year | URL |
 |---|---|---|---|
-| parks | PARKINFOOGD | 1054 | `BEZIRK` column (+ `FLAECHE` area, playground, water, dog zone) |
-| schools | SCHULEOGD | 806 | `ADRESSE` prefix "11., …" |
-| kindergartens | KINDERGARTENOGD | 1677 | `PLZ` (1170 → district 17) |
-| universities | UNIVERSITAETOGD | 161 | `ADRESSE` prefix |
-| markets | MAERKTEOGD | 23 | coordinates only → spatial join |
-| green_public | OEFFGRUENFLOGD | 1936 | polygons → spatial join |
-| district_borders | BEZIRKSGRENZEOGD | 23 | polygons → district adjacency graph (for recursion) |
+| Population density | population, area (km²), residents per km² | 2025 | https://www.wien.gv.at/gogv/l9ogdviebezbizpopden2002f |
+| Average age | average age | 2025 | https://www.wien.gv.at/gogv/l9ogdviebezbizpopage2002f |
+| Net income | average annual net income | 2021 | https://www.wien.gv.at/gogv/l9ogdviebezbizecnincsex2002f |
+| Unemployment | unemployed per 1,000 residents | 2023 | https://www.wien.gv.at/gogv/l9ogdviebezbizempsexuep2002f |
+| Education | share with tertiary education | 2023 | https://www.wien.gv.at/gogv/l9ogdviebezbizeduatt2008f |
+| Households | people by household type (single, shared, married, cohabiting, single parent) | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezpopsexhhtyp2012f |
+| Families | families by type (with and without children, single parents) | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezfamtyp2012f |
+| Traffic areas | road area, pedestrian zones, length of cycle paths | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbiztectra2002f |
+| Medical care | general practitioners, specialists and pharmacies per 1,000 residents | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbizmedsup2002f |
+| Tourism | overnight stays per 1,000 residents | 2024 | https://www.wien.gv.at/gogv/l9ogdviebezbizecntou2002f |
 
-## C2. Leisure point data (WFS, same base URL) — added 2026-09-26
-| Key | TYPE | Rows | District link | Notes |
-|---|---|---|---|---|
-| sport_facilities | SPORTSTAETTENOGD | 1543 | `ADRESSE` prefix | `SPORTSTAETTEN_ART`: pitches, halls, table tennis, skate, beach volleyball, pools… |
-| playgrounds | SPIELPLATZPUNKTOGD | 773 | `BEZIRK` | `SPIELPLATZ_DETAIL`: Fußball 258, Basketball 184, Volleyball 68…; `TYP_DETAIL` Ballspielplatz/Käfig |
-| museums | MUSEUMOGD | 137 | `BEZIRK` | culture |
+## 2. Car density (City of Vienna)
 
-## C3. OpenStreetMap (ODbL, "© OpenStreetMap contributors") via Overpass API
-Query tested 2026-09-26 (area Wien admin_level 4), 8,292 elements:
-restaurant 3019, pitch 2685 (tennis 600, soccer 499, table_tennis 265, basketball 255, beachvolleyball 164),
-cafe 1226, bar 447, sports_centre 314, fitness_centre 261, pub 250, nightclub 59, biergarten 16.
-Only source for nightlife (bars/pubs/clubs); much better tennis coverage than city data.
-Coordinates → district via spatial join with BEZIRKSGRENZEOGD.
+Cars per 1,000 residents per district, 2024: https://www.wien.gv.at/data/ogd/ma20/pkwdichte2024.csv
 
-## D. Wiener Linien (public transport) — `https://www.wienerlinien.at/ogd_realtime/doku/ogd/`
-| File | Content |
+## 3. Map layers (City of Vienna WFS)
+
+Base URL (`<TYPE>` as in the table), returning CSV in WGS84:
+
+`https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&srsName=EPSG:4326&outputFormat=csv&typeName=ogdwien:<TYPE>`
+
+Every record is assigned to a district by its coordinates (point in polygon). The district stated in
+the record itself (`BEZIRK` column, address prefix such as `11., …` or postcode) is kept to detect
+conflicting records.
+
+| Layer | TYPE | Records | Notes |
+|---|---|---|---|
+| Parks | `PARKINFOOGD` | 1,054 | park area from `FLAECHE` |
+| Schools | `SCHULEOGD` | 806 | |
+| Kindergartens | `KINDERGARTENOGD` | 1,676 | |
+| Universities | `UNIVERSITAETOGD` | 161 | |
+| Markets | `MAERKTEOGD` | 23 | |
+| Museums | `MUSEUMOGD` | 137 | |
+| Sport facilities | `SPORTSTAETTENOGD` | 1,542 | sport types from `SPORTSTAETTEN_ART` |
+| Playgrounds | `SPIELPLATZPUNKTOGD` | 773 | ball courts from `SPIELPLATZ_DETAIL` |
+| District boundaries | `BEZIRKSGRENZEOGD` | 23 | polygons (`outputFormat=json`): district assignment, adjacency, maps |
+
+## 4. Public transport timetables (Wiener Linien GTFS)
+
+http://www.wienerlinien.at/ogd_realtime/doku/ogd/gtfs/gtfs.zip
+
+Only `stops.txt`, `stop_times.txt`, `trips.txt` and `routes.txt` are used. Platforms are merged into
+stations, and for every line the mean in-vehicle time between consecutive stations is computed from
+the timetable. Result: 1,757 stations, 195 lines and 7,545 line segments.
+
+## 5. OpenStreetMap (Overpass API)
+
+Snapshot of 2026-09-26, queried from https://overpass-api.de/api/interpreter with the query in
+`src/vdkg/ingest/osm.py`. It covers bars, pubs, clubs, beer gardens, restaurants, cafés, public
+baths, pitches, sports and fitness centres, outdoor fitness stations, water parks and public
+swimming pools within Vienna.
+
+| Category | Records |
 |---|---|
-| wienerlinien-ogd-haltestellen.csv | 2,007 stations (DIVA, name, lon/lat) |
-| wienerlinien-ogd-haltepunkte.csv | 5,124 stop points (StopID, DIVA, lon/lat) |
-| wienerlinien-ogd-linien.csv | 205 lines (U-Bahn, tram, bus; MeansOfTransport) |
-| wienerlinien-ogd-fahrwegverlaeufe.csv | 87k rows: stop sequence per line & direction |
-→ stops per district (spatial join), U-Bahn lines per district, district-to-district transit links.
+| Restaurants | 3,018 |
+| Cafés | 1,226 |
+| Bars / pubs / nightclubs / beer gardens | 447 / 250 / 59 / 16 |
+| Pitches | 2,687 |
+| Sports centres | 317 |
+| Fitness centres / fitness stations | 261 / 205 |
+| Swimming venues | 68 |
 
-## D2. Wiener Linien GTFS (timetables) — already downloaded
-In `../kgcourse-project-starting-template/src/assets/data/wienerlinien/` (feed valid 2025-12 → 2026-08):
-stops.txt (4,331 stops incl. Baden → filter to Vienna), routes.txt, trips.txt (434k),
-stop_times.txt (8.2M rows, 717 MB), shapes.txt. Source: data.gv.at dataset ab4a73b6-1c2d-42e1-b4d9-049e04889cf0.
-→ travel times between stops/districts (weighted transit graph).
+OpenStreetMap pitches and the city's sport facilities describe partly the same places. Records of the
+same sport within 40 m of each other are linked and merged into one venue by the rules: 3,715
+records with 4,782 sport entries become 3,003 venues.
 
-## E0. Rent — course-sanctioned approach (from the course's example project)
-`../kgcourse-project-starting-template/helpers/`: manually copy willhaben search-result JSON
-(`https://www.willhaben.at/webapi/iad/search/atz/seo/immobilien/mietwohnungen/wien?rows=30&page=N`)
-"like a normal user" (template explicitly says: do NOT scrape) → `extractor.py` → PRICE, POSTCODE,
-LIVING_AREA, coordinates. 4 sample pages from 2023-02 exist (120 listings, 20 postcodes).
+## Not included
 
-## E. Gaps (no usable open source found)
-- **Crime by district**: no open data. Only press figures (LPD Wien via e.g. oe24) and Statista (paywall).
-- **Rent by district**: no official open data. Commercial benchmarks exist (mietdaten.at, metrox.io,
-  ohne-makler.at) — not open data.
-- **Kaufpreissammlung Liegenschaften** (property transactions): former link `go.gv.at/l9kaufpreissammlungliegenschaften` now 404 — discontinued.
-- Statistik Austria (data.statistik.gv.at): mostly the same census data MA 23 republishes; not needed.
-- Optional: OpenStreetMap (ODbL) via Overpass for bars/restaurants/cafés (nightlife) — not yet tested.
+Crime and rent figures per district are not published as official open data, so the KG contains
+neither.

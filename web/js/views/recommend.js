@@ -86,7 +86,7 @@ export async function render(root, { meta, navigate, params }) {
       el(
         "p",
         {},
-        "Tell the knowledge graph what matters to you. Rules over Vienna's open data decide what each district offers — also what is reachable nearby by public transport — and every result explains why it ranks where it does.",
+        "Tell the knowledge graph what matters to you. Rules over Vienna's open data decide what each district offers (including what is reachable nearby by public transport), and every result explains why it ranks where it does.",
       ),
     ),
     el(
@@ -381,7 +381,7 @@ function buildForm(meta, onSubmit) {
           persist();
         },
       },
-      el("option", { value: "" }, "— none —"),
+      el("option", { value: "" }, "(none)"),
       meta.districts.map((d) =>
         el("option", { value: d.id, selected: d.id === state.similarTo }, districtTitle(d)),
       ),

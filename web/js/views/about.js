@@ -70,7 +70,7 @@ function reasoningStats(stats) {
     el(
       "p",
       { class: "small muted", style: "margin-top:0.75rem" },
-      "Rules include a recursive venue taxonomy, record linkage by transitive closure, rank-based levels, line-aware transit reachability (recursive, 4 min per transfer, ≤ 45 min) and — per request — existential rules that create one recommendation object per district.",
+      "Rules include a recursive venue taxonomy, record linkage by transitive closure, rank-based levels, line-aware transit reachability (recursive, 4 min per transfer, ≤ 45 min) and, per request, existential rules that create one recommendation object per district.",
     ),
   );
 }
@@ -120,7 +120,7 @@ function sources(meta) {
       {},
       el("li", {}, "District statistics (MA 23 / MA 20), latest complete year ", range.length ? `${Math.min(...range)}–${Math.max(...range)}` : ""),
       el("li", {}, "Parks, schools, kindergartens, universities, markets, museums, sport facilities and playgrounds (City of Vienna WFS)"),
-      el("li", {}, "Timetables (Wiener Linien GTFS) — stations, lines, travel times"),
+      el("li", {}, "Timetables (Wiener Linien GTFS): stations, lines, travel times"),
       el("li", {}, `Bars, restaurants, cafés, pitches, gyms and pools (OpenStreetMap, snapshot ${meta.stats.metadata?.osm_snapshot ?? ""})`),
       el("li", {}, "District boundaries (City of Vienna)"),
     ),
@@ -132,7 +132,7 @@ function limitations() {
   return el(
     "ul",
     {},
-    el("li", {}, "No rent or crime data — not available as official open data per district."),
+    el("li", {}, "No rent or crime data, as neither is available as official open data per district."),
     el("li", {}, "Travel times are in-vehicle times between each district's busiest station and a destination; waiting and walking are not modelled."),
     el("li", {}, "Levels are relative (top / middle / bottom third of Vienna's districts), not absolute thresholds."),
     el("li", {}, "OpenStreetMap coverage varies between districts."),
