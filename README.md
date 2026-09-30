@@ -8,29 +8,43 @@ OpenStreetMap). A **logic layer** (Nemo, Datalog with existential rules) derives
 offer, public-transport reachability and explained recommendations; an **embedding layer**
 (PyKEEN: TransE, RotatE) learns district similarity. A small web app serves both.
 
-## Quick start
+## Setup
 
 Requires Python ≥ 3.11 (developed with 3.12 on Windows). Commands are for Windows (`cmd`/PowerShell);
 on macOS/Linux use `.venv/bin/...` instead of `.venv\Scripts\...`. After activating the virtual
 environment (`.venv\Scripts\activate`), the prefix can be dropped and `vdkg ...` works directly.
 
+The project already contains all results: processed data, the knowledge graph, the reasoning results
+and the trained embeddings. **To try the web app, Option A is all you need.** Option B is only needed
+to recompute the results (training, pipeline) or to run the tests.
+
+| I want to … | Setup |
+|---|---|
+| use the web app (recommendations, similar districts, district profiles) | **Option A** |
+| rerun `vdkg ingest`, `vdkg build`, `vdkg reason` | Option A |
+| retrain the embeddings (`vdkg embed`, `vdkg all`) or regenerate the report evidence (`vdkg report`) | Option A + B |
+| run the tests / linter | Option A + B |
+
+### Option A — run the web app (no training, no GPU, a few minutes)
+
+Run once:
+
 ```bash
 python -m venv .venv
 ```
 ```bash
-.venv\Scripts\pip install torch --index-url https://download.pytorch.org/whl/cpu
-```
-```bash
-.venv\Scripts\pip install -e ".[ml,dev]"
+.venv\Scripts\pip install -e .
 ```
 ```bash
 python tools/setup_nemo.py
 ```
 
-`tools/setup_nemo.py` downloads the Nemo rule engine (v0.10.1) for your platform into `tools/nemo/`
-and verifies its checksum. It is not committed to git.
+- `pip install -e .` installs only the packages the app needs (FastAPI, pandas, …) — no PyTorch/PyKEEN.
+- `tools/setup_nemo.py` downloads the Nemo rule engine (v0.10.1) for your platform into `tools/nemo/`
+  and verifies its checksum. It is needed because the Recommend page runs the rules for every
+  search. If `tools/nemo/` already exists (e.g. in a copy of the project that includes it), skip it.
 
-### Start the web app
+Start the web app (this is the only command needed from then on):
 
 ```bash
 .venv\Scripts\vdkg serve
@@ -40,8 +54,25 @@ Then open **http://127.0.0.1:8000** in a browser. Stop the server with `Ctrl+C`.
 
 - Other port: `.venv\Scripts\vdkg serve --port 8080`; reachable from other devices in the network: `.venv\Scripts\vdkg serve --host 0.0.0.0`.
 - Interactive API documentation (Swagger UI): **http://127.0.0.1:8000/docs**.
-- The processed data, the ground KG, the reasoning results and the embeddings are committed, so the
-  app works right after setup — no pipeline run needed.
+
+### Option B — full setup: training, report evidence, tests
+
+Only needed to recompute results. Run once, after Option A, in the same virtual environment:
+
+```bash
+.venv\Scripts\pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+```bash
+.venv\Scripts\pip install -e ".[ml,dev]"
+```
+
+- The first command installs the CPU build of PyTorch (much smaller than the default download).
+- `[ml]` adds PyKEEN, SciPy, Matplotlib and rdflib (embeddings, figures, RDF export); `[dev]` adds
+  pytest and ruff.
+- The pipeline commands are described under [Pipeline](#pipeline), the tests under
+  [Tests and code quality](#tests-and-code-quality).
+
+## Web app
 
 Pages: **Recommend** (choose preferences, optional commute and "similar to a district I like"),
 **Similar districts** (TransE / RotatE / feature baseline), **Districts** (profile with every fact,
@@ -51,17 +82,18 @@ Result pages are shareable: after a search the URL contains all preferences
 
 ## Pipeline
 
-Each step reads the output of the previous one:
+Not needed to use the web app — all outputs are already included. Each step reads the output of the
+previous one; the last column shows the setup it requires:
 
-| Command | Does | Output | Time |
-|---|---|---|---|
-| `.venv\Scripts\vdkg ingest` | download + parse all sources, district assignment, record-linkage candidates | `data/processed/`, `web/data/districts.geojson` | ~70 s |
-| `.venv\Scripts\vdkg build` | processed tables → ground facts for the rules | `data/kg/*.csv` | ~1 s |
-| `.venv\Scripts\vdkg reason` | Nemo materialisation (rules 10–40) | `artifacts/materialized/` | ~17 s |
-| `.venv\Scripts\vdkg embed` | PyKEEN training (TransE, RotatE × 5 seeds), evaluation, similarity facts | `artifacts/embeddings/`, `data/kg/triples.tsv` | ~6 min |
-| `.venv\Scripts\vdkg all` | the four steps above | | ~8 min |
-| `.venv\Scripts\vdkg report` | evidence for the report: verification, derivation traces, RDF export + SPARQL, embedding examples, figures | `artifacts/report/`, `data/kg/vienna_kg.trig` | ~20 s |
-| `.venv\Scripts\vdkg serve` | web app + API | | |
+| Command | Does | Output | Time | Setup |
+|---|---|---|---|---|
+| `.venv\Scripts\vdkg ingest` | download + parse all sources, district assignment, record-linkage candidates | `data/processed/`, `web/data/districts.geojson` | ~70 s | A |
+| `.venv\Scripts\vdkg build` | processed tables → ground facts for the rules | `data/kg/*.csv` | ~1 s | A |
+| `.venv\Scripts\vdkg reason` | Nemo materialisation (rules 10–40) | `artifacts/materialized/` | ~17 s | A |
+| `.venv\Scripts\vdkg embed` | PyKEEN training (TransE, RotatE × 5 seeds), evaluation, similarity facts | `artifacts/embeddings/`, `data/kg/triples.tsv` | ~6 min | A + B |
+| `.venv\Scripts\vdkg all` | the four steps above | | ~8 min | A + B |
+| `.venv\Scripts\vdkg report` | evidence for the report: verification, derivation traces, RDF export + SPARQL, embedding examples, figures | `artifacts/report/`, `data/kg/vienna_kg.trig` | ~20 s | A + B |
+| `.venv\Scripts\vdkg serve` | web app + API | | | A |
 
 Restart `.venv\Scripts\vdkg serve` after rerunning a step — the server caches the KG in memory.
 
@@ -153,6 +185,8 @@ The web app only needs `data/processed/`, `artifacts/` and `web/`; everything el
 | `VDKG_NEMO` | path to a Nemo executable (default: `tools/nemo/nemo_v0.10.1_*/nmo[.exe]`) |
 
 ## Tests and code quality
+
+Requires the `[dev]` packages from Option B.
 
 ```bash
 .venv\Scripts\python -m pytest
