@@ -145,12 +145,6 @@ Notes:
 
 The web app only needs `data/processed/`, `artifacts/` and `web/`; everything else can be regenerated.
 
-## Moving to another machine
-
-1. Copy the repository (or `git clone` it), including `data/` and `artifacts/`.
-2. Run the *Quick start* setup (venv, packages, `python tools/setup_nemo.py`).
-3. `.venv\Scripts\vdkg serve` — done. Only rerun the pipeline if data or rules change.
-
 ## Configuration
 
 | Environment variable | Meaning |
@@ -162,7 +156,11 @@ The web app only needs `data/processed/`, `artifacts/` and `web/`; everything el
 
 ```bash
 .venv\Scripts\python -m pytest
+```
+```bash
 .venv\Scripts\ruff check src tests
+```
+```bash
 .venv\Scripts\ruff format src tests
 ```
 
