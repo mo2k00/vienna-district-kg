@@ -15,8 +15,14 @@ on macOS/Linux use `.venv/bin/...` instead of `.venv\Scripts\...`.
 
 ```bash
 python -m venv .venv
+```
+```bash
 .venv\Scripts\pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+```bash
 .venv\Scripts\pip install -e ".[ml,dev]"
+```
+```bash
 python tools/setup_nemo.py
 ```
 
@@ -39,6 +45,8 @@ Then open **http://127.0.0.1:8000** in a browser. Stop the server with `Ctrl+C`.
 Pages: **Recommend** (choose preferences, optional commute and "similar to a district I like"),
 **Similar districts** (TransE / RotatE / feature baseline), **Districts** (profile with every fact,
 its source and year), **About the KG** (statistics and model metrics).
+Result pages are shareable: after a search the URL contains all preferences
+(e.g. `#/recommend/going_out=3&sport_tennis=2&nearby=10`); opening it re-runs the search.
 
 ## Pipeline
 
@@ -59,29 +67,12 @@ Restart `vdkg serve` after rerunning a step — the server caches the KG in memo
 Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot in
 `data/snapshots/osm_pois.json` is committed so results are reproducible.
 
-## Report evidence and submission
-
-```bash
-vdkg report                               # artifacts/report/: verification.json, traces.md, examples.json, rdf_export.json, figures/
-python tools/screenshots.py               # needs a running `vdkg serve` and Chrome → artifacts/report/screenshots/
-python tools/package_submission.py        # → dist/vienna-district-kg-submission.zip
-python tools/build_portfolio.py           # → dist/portfolio/KG_Portfolio_Lindner-structured.{docx,pdf}
-```
-
-The portfolio is written in `docs/portfolio/report.md` (Markdown) with the cover-page entries in
-`docs/portfolio/cover.json`. `build_portfolio.py` fills the course pro-forma, appends the report,
-fills in the page references on the cover pages and exports the PDF through Microsoft Word
-(`pip install -e ".[portfolio]"`, Windows with Word required). Highlighted fields on the cover pages
-(hours, AI percentages, declaration) are placeholders to fill in `cover.json`.
+`vdkg report` writes to `artifacts/report/`:
 
 - `verification.json` checks reasoning results against independent Python implementations
   (Dijkstra for travel times, union-find for record linkage, ranks).
 - `traces.md` contains derivation trees from `nmo --trace`.
-- The submission ZIP contains the runnable repository (without `.venv`, Nemo binary and raw downloads)
-  plus the folders `2 - construction`, `3 - ML`, `4 - logic`, `5 - reflection` with the evidence for
-  each report section.
-- Result pages are shareable: after a search the URL contains all preferences
-  (e.g. `#/recommend/going_out=3&sport_tennis=2&nearby=10`); opening it re-runs the search.
+- `examples.json` (embedding examples), `rdf_export.json` (RDF export + SPARQL query) and `figures/`.
 
 ## Data files: sources, names and locations
 
@@ -193,12 +184,12 @@ The rule and service tests are skipped automatically if Nemo or the materialised
 | `src/vdkg/embeddings/` | training, similarity, completion experiment |
 | `src/vdkg/service/` | preference catalogue, KG access, recommender, district profiles |
 | `src/vdkg/api/` | FastAPI routes (`/api/...`) and static hosting of `web/` |
-| `src/vdkg/report/` | verification, traces, examples, figures for the report |
-| `tools/` | Nemo setup, screenshots, submission packaging |
+| `src/vdkg/report/` | verification, derivation traces, RDF export, embedding examples, figures |
+| `tools/` | Nemo setup |
 | `web/` | frontend: vanilla JS modules, Leaflet, hand-written CSS |
 | `data/` | `raw/` downloads (not committed), `snapshots/` OSM, `processed/` tables, `kg/` ground facts |
 | `artifacts/` | `materialized/` reasoning results, `embeddings/` models, metrics, similarities, `report/` evidence |
-| `docs/` | plan, data sources, portfolio notes, AI usage log |
+| `docs/` | data sources, AI usage log |
 | `tests/` | parsers, a rule smoke test, recommender and API |
 
 ## Data sources
