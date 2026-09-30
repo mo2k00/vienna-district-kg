@@ -11,7 +11,8 @@ offer, public-transport reachability and explained recommendations; an **embeddi
 ## Quick start
 
 Requires Python ≥ 3.11 (developed with 3.12 on Windows). Commands are for Windows (`cmd`/PowerShell);
-on macOS/Linux use `.venv/bin/...` instead of `.venv\Scripts\...`.
+on macOS/Linux use `.venv/bin/...` instead of `.venv\Scripts\...`. After activating the virtual
+environment (`.venv\Scripts\activate`), the prefix can be dropped and `vdkg ...` works directly.
 
 ```bash
 python -m venv .venv
@@ -37,7 +38,7 @@ and verifies its checksum. It is not committed to git.
 
 Then open **http://127.0.0.1:8000** in a browser. Stop the server with `Ctrl+C`.
 
-- Other port: `vdkg serve --port 8080`; reachable from other devices in the network: `vdkg serve --host 0.0.0.0`.
+- Other port: `.venv\Scripts\vdkg serve --port 8080`; reachable from other devices in the network: `.venv\Scripts\vdkg serve --host 0.0.0.0`.
 - Interactive API documentation (Swagger UI): **http://127.0.0.1:8000/docs**.
 - The processed data, the ground KG, the reasoning results and the embeddings are committed, so the
   app works right after setup — no pipeline run needed.
@@ -54,20 +55,20 @@ Each step reads the output of the previous one:
 
 | Command | Does | Output | Time |
 |---|---|---|---|
-| `vdkg ingest` | download + parse all sources, district assignment, record-linkage candidates | `data/processed/`, `web/data/districts.geojson` | ~70 s |
-| `vdkg build` | processed tables → ground facts for the rules | `data/kg/*.csv` | ~1 s |
-| `vdkg reason` | Nemo materialisation (rules 10–40) | `artifacts/materialized/` | ~17 s |
-| `vdkg embed` | PyKEEN training (TransE, RotatE × 5 seeds), evaluation, similarity facts | `artifacts/embeddings/`, `data/kg/triples.tsv` | ~6 min |
-| `vdkg all` | the four steps above | | ~8 min |
-| `vdkg report` | evidence for the report: verification, derivation traces, RDF export + SPARQL, embedding examples, figures | `artifacts/report/`, `data/kg/vienna_kg.trig` | ~20 s |
-| `vdkg serve` | web app + API | | |
+| `.venv\Scripts\vdkg ingest` | download + parse all sources, district assignment, record-linkage candidates | `data/processed/`, `web/data/districts.geojson` | ~70 s |
+| `.venv\Scripts\vdkg build` | processed tables → ground facts for the rules | `data/kg/*.csv` | ~1 s |
+| `.venv\Scripts\vdkg reason` | Nemo materialisation (rules 10–40) | `artifacts/materialized/` | ~17 s |
+| `.venv\Scripts\vdkg embed` | PyKEEN training (TransE, RotatE × 5 seeds), evaluation, similarity facts | `artifacts/embeddings/`, `data/kg/triples.tsv` | ~6 min |
+| `.venv\Scripts\vdkg all` | the four steps above | | ~8 min |
+| `.venv\Scripts\vdkg report` | evidence for the report: verification, derivation traces, RDF export + SPARQL, embedding examples, figures | `artifacts/report/`, `data/kg/vienna_kg.trig` | ~20 s |
+| `.venv\Scripts\vdkg serve` | web app + API | | |
 
-Restart `vdkg serve` after rerunning a step — the server caches the KG in memory.
+Restart `.venv\Scripts\vdkg serve` after rerunning a step — the server caches the KG in memory.
 
 Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot in
 `data/snapshots/osm_pois.json` is committed so results are reproducible.
 
-`vdkg report` writes to `artifacts/report/`:
+`.venv\Scripts\vdkg report` writes to `artifacts/report/`:
 
 - `verification.json` checks reasoning results against independent Python implementations
   (Dijkstra for travel times, union-find for record linkage, ranks).
@@ -76,7 +77,10 @@ Downloads are cached in `data/raw/` (not committed). The OpenStreetMap snapshot 
 
 ## Data files: sources, names and locations
 
-`vdkg ingest` downloads everything automatically and caches it under the names below. To download a
+```bash
+.venv\Scripts\vdkg ingest
+```
+downloads everything automatically and caches it under the names below. To download a
 file **manually** (e.g. when a portal is slow or you want a specific version), save it under exactly
 this name and location — the loader then uses the local file instead of downloading. Keep the files
 as published: do not rename columns, change separators or re-encode them.
@@ -119,25 +123,25 @@ Notes:
   (e.g. on https://overpass-turbo.eu, export as raw JSON) and save the response as
   `data/snapshots/osm_pois.json`. The snapshot date is read from a `snapshot_date` field if present,
   otherwise from the file's modification date. This file is committed so results stay reproducible.
-- After adding or replacing any file, run `vdkg all` (or the steps from `vdkg ingest` on).
+- After adding or replacing any file, run `.venv\Scripts\vdkg all` (or the steps from `.venv\Scripts\vdkg ingest` on).
 
 ## Updating or exchanging data
 
 | I want to … | Do this | Then run |
 |---|---|---|
-| refresh everything from the internet | delete `data/raw/` and `data/snapshots/osm_pois.json` | `vdkg all` |
-| refresh only OpenStreetMap | delete `data/snapshots/osm_pois.json` | `vdkg all` |
-| refresh one city dataset | delete its file in `data/raw/` (`ma23_<key>.csv`, `wfs_<key>.csv`, `ma20_car_density.csv`, `district_borders.geojson`) | `vdkg all` |
-| use an already downloaded GTFS feed | set `VDKG_GTFS_DIR` to the folder with `stops.txt`, `stop_times.txt`, `trips.txt`, `routes.txt` (e.g. the course template's `src/assets/data/wienerlinien`) | `vdkg all` |
-| get a fresh GTFS feed | delete `data/raw/gtfs/` and `data/raw/gtfs.zip` (and unset `VDKG_GTFS_DIR`) — downloaded automatically (large, stop_times.txt alone is ~700 MB unpacked) | `vdkg all` |
-| add another MA 23 district statistics series | add a `StatisticsSeries` to `STATISTICS` in `src/vdkg/ingest/sources.py` (URL + column → indicator name); to use it as a feature add `directFeature("<indicator>").` in `20_aggregates.rls` and a label in `FEATURE_LABELS` (`service/catalogue.py`) | `vdkg all` |
-| add another City of Vienna point layer | add a `PointLayer` to `POINT_LAYERS` in `sources.py`; map its category in the `subClassOf` / `countedClass` facts of `10_mapping.rls` / `20_aggregates.rls` | `vdkg all` |
-| change what a preference means | edit its `signal(...)` / `required(...)` facts in `30_traits.rls` | `vdkg reason`, `vdkg embed` |
-| add a new preference | add `signal`/`required` facts in `30_traits.rls` and a `Preference` in `service/catalogue.py` | `vdkg reason`, `vdkg embed` |
-| change level thresholds (thirds) | the `level(...)` rules at the top of `30_traits.rls` | `vdkg reason`, `vdkg embed` |
-| change transfer penalty / max travel time | `+ 4` and `<= 45` in `40_transit.rls` (keep the limit ≤ 45 — see below) | `vdkg reason`, `vdkg embed` |
-| change scoring of recommendations | `contribution(...)` rules in `50_recommend.rls` / `55_similarity.rls` | restart `vdkg serve` |
-| change embedding models / hyperparameters | `MODELS`, `SEEDS`, `TrainingConfig` in `src/vdkg/embeddings/train.py` | `vdkg embed` |
+| refresh everything from the internet | delete `data/raw/` and `data/snapshots/osm_pois.json` | `.venv\Scripts\vdkg all` |
+| refresh only OpenStreetMap | delete `data/snapshots/osm_pois.json` | `.venv\Scripts\vdkg all` |
+| refresh one city dataset | delete its file in `data/raw/` (`ma23_<key>.csv`, `wfs_<key>.csv`, `ma20_car_density.csv`, `district_borders.geojson`) | `.venv\Scripts\vdkg all` |
+| use an already downloaded GTFS feed | set `VDKG_GTFS_DIR` to the folder with `stops.txt`, `stop_times.txt`, `trips.txt`, `routes.txt` (e.g. the course template's `src/assets/data/wienerlinien`) | `.venv\Scripts\vdkg all` |
+| get a fresh GTFS feed | delete `data/raw/gtfs/` and `data/raw/gtfs.zip` (and unset `VDKG_GTFS_DIR`) — downloaded automatically (large, stop_times.txt alone is ~700 MB unpacked) | `.venv\Scripts\vdkg all` |
+| add another MA 23 district statistics series | add a `StatisticsSeries` to `STATISTICS` in `src/vdkg/ingest/sources.py` (URL + column → indicator name); to use it as a feature add `directFeature("<indicator>").` in `20_aggregates.rls` and a label in `FEATURE_LABELS` (`service/catalogue.py`) | `.venv\Scripts\vdkg all` |
+| add another City of Vienna point layer | add a `PointLayer` to `POINT_LAYERS` in `sources.py`; map its category in the `subClassOf` / `countedClass` facts of `10_mapping.rls` / `20_aggregates.rls` | `.venv\Scripts\vdkg all` |
+| change what a preference means | edit its `signal(...)` / `required(...)` facts in `30_traits.rls` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
+| add a new preference | add `signal`/`required` facts in `30_traits.rls` and a `Preference` in `service/catalogue.py` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
+| change level thresholds (thirds) | the `level(...)` rules at the top of `30_traits.rls` | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
+| change transfer penalty / max travel time | `+ 4` and `<= 45` in `40_transit.rls` (keep the limit ≤ 45 — see below) | `.venv\Scripts\vdkg reason`, `.venv\Scripts\vdkg embed` |
+| change scoring of recommendations | `contribution(...)` rules in `50_recommend.rls` / `55_similarity.rls` | restart `.venv\Scripts\vdkg serve` |
+| change embedding models / hyperparameters | `MODELS`, `SEEDS`, `TrainingConfig` in `src/vdkg/embeddings/train.py` | `.venv\Scripts\vdkg embed` |
 
 The web app only needs `data/processed/`, `artifacts/` and `web/`; everything else can be regenerated.
 
@@ -145,7 +149,7 @@ The web app only needs `data/processed/`, `artifacts/` and `web/`; everything el
 
 1. Copy the repository (or `git clone` it), including `data/` and `artifacts/`.
 2. Run the *Quick start* setup (venv, packages, `python tools/setup_nemo.py`).
-3. `vdkg serve` — done. Only rerun the pipeline if data or rules change.
+3. `.venv\Scripts\vdkg serve` — done. Only rerun the pipeline if data or rules change.
 
 ## Configuration
 
@@ -167,9 +171,9 @@ The rule and service tests are skipped automatically if Nemo or the materialised
 ## Troubleshooting
 
 - **"Nemo not found"** → run `python tools/setup_nemo.py` (or set `VDKG_NEMO`).
-- **Port 8000 in use** → `vdkg serve --port 8080`.
-- **Similar-districts page says no embeddings** → run `vdkg embed`.
-- **`vdkg reason` uses a lot of memory / never finishes** → the transit recursion enumerates path
+- **Port 8000 in use** → `.venv\Scripts\vdkg serve --port 8080`.
+- **Similar-districts page says no embeddings** → run `.venv\Scripts\vdkg embed`.
+- **`.venv\Scripts\vdkg reason` uses a lot of memory / never finishes** → the transit recursion enumerates path
   costs; keep the travel-time limit at ≤ 45 minutes and segment times in whole minutes.
 - **Map without background** → the basemap tiles come from basemap.at and need internet access.
 
